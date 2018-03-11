@@ -13,29 +13,41 @@
 </head>
 <style>
 
-#ex1Slider .slider-selection {
+/* #ex1Slider .slider-selection {
 	background: #BABABA;
-}
+} */
 </style>
 
 <body>
-  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"  slider-orientation="vertical"/>
+  <br /><br />
+  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="-1" data-slider-max="1" data-slider-step="1" data-slider-value="14"/>
   <span id="ex1CurrentSliderValLabel">Current Slider Value: <span id="ex1SliderVal">3</span></span>
+  <br />
+  <br />
+  <br />
+  <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="2.0" data-slider-max="5.0" data-slider-step="0.1" data-slider-value="3.5"  data-slider-orientation="vertical"/>
 
   <script>
 var slider = new Slider('#ex1', {
+  precision : 1,
+  tooltip : 'always',
 	formatter: function(value) {
+
 		return 'Current value: ' + value;
-	},
-  tooltip: 'always'
+	}
 });
 
 // slider.on("slide", function(sliderValue) {
 // 	document.getElementById("ex1SliderVal").textContent = sliderValue;
 // }
 slider.on("slide",function(sliderValue){
-  $('#ex1SliderVal').text(sliderValue);
-})
+  var value = ['Male','All','Female'];
+  $('#ex1SliderVal').text(value[sliderValue+1]);
+});
+
+var slider = new Slider("#ex2", {
+	reversed : true
+});
   </script>
 </body>
 
