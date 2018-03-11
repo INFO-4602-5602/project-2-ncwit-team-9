@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <title>Testing slider</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!--Put your D3 import statement between these two lines-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="rangeslider/rangeslider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+  <style type="text/css" href="rangeslider/rangeslider.css"></style>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css"></style>
+  <!--Put your D3 import statement between these two lines-->
+</head>
+<style>
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+</style>
+
+<body>
+  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"  slider-orientation="vertical"/>
+  <span id="ex1CurrentSliderValLabel">Current Slider Value: <span id="ex1SliderVal">3</span></span>
+
+  <script>
+var slider = new Slider('#ex1', {
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	},
+  tooltip: 'always'
+});
+
+// slider.on("slide", function(sliderValue) {
+// 	document.getElementById("ex1SliderVal").textContent = sliderValue;
+// }
+slider.on("slide",function(sliderValue){
+  $('#ex1SliderVal').text(sliderValue);
+})
+  </script>
+</body>
+
+</html>
