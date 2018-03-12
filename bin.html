@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title>Bining prototyping</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!--Put your D3 import statement between these two lines-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+
+  </style>
+</head>
+
+<body>
+  <h3> Binning HTML</h3>
+  <div id="partTwo">
+
+  </div>
+</body>
+<script type="text/javascript">
+  var margin = {
+      top: 20,
+      right: 20,
+      bottom: 30,
+      left: 40
+    },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+  var hs_gpa_list  = [];
+  var freshman_list = [];
+  d3.json('data.json', function(error, data) {
+    console.log(data);
+    d3.select("#partTwo")
+      .append("p")
+      .data(data.filter(function(d) {
+        if (d.inst == "all" && d.gender=="all" && d.study =="freshman")
+        {
+          hs_gpa_list.push(d.hs_gpa);
+          freshman_list.push(d.avg);
+          console.log("Encountered" + d.gender +d.study)
+          return d;
+        }
+      }))
+      .enter()
+      .append("div")
+      .text(function(d) { return "Encountered" + d.gender +d.study + " : " + d.avg; });
+  });
+  console.log(hs_gpa_list);
+</script>
+
+</html>

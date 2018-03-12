@@ -8,46 +8,75 @@
   <script src="rangeslider/rangeslider.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
   <style type="text/css" href="rangeslider/rangeslider.css"></style>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css"></style>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css">
+  </style>
   <!--Put your D3 import statement between these two lines-->
 </head>
 <style>
-
-/* #ex1Slider .slider-selection {
+  /* #ex1Slider .slider-selection {
 	background: #BABABA;
 } */
 </style>
 
 <body>
   <br /><br />
-  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="-1" data-slider-max="1" data-slider-step="1" data-slider-value="14"/>
+  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="-1" data-slider-max="1" data-slider-step="1" data-slider-value="14" />
   <span id="ex1CurrentSliderValLabel">Current Slider Value: <span id="ex1SliderVal">3</span></span>
   <br />
   <br />
   <br />
+  <span>
   <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="2.0" data-slider-max="5.0" data-slider-step="0.1" data-slider-value="3.5"  data-slider-orientation="vertical"/>
-
+  <input id="ex3" data-slider-id='ex2Slider' type="text" data-slider-min="2.0" data-slider-max="5.0" data-slider-step="0.1" data-slider-value="3.5"  data-slider-orientation="vertical"/>
+  </span>
+  <br /><br />
+  <input id="ex21" type="text"
+          data-provide="slider"
+          data-slider-ticks="[1, 2, 3]"
+          data-slider-ticks-labels='["Male", "All", "Female"]'
+          data-slider-min="1"
+          data-slider-max="3"
+          data-slider-step="1"
+          data-slider-value="3"
+          data-slider-tooltip="hide" />
+<span id="genderSelect">Current Gender Value: <span id="genderSelect"></span></span>
   <script>
-var slider = new Slider('#ex1', {
-  precision : 1,
-  tooltip : 'always',
-	formatter: function(value) {
+    var slider = new Slider('#ex1', {
+      precision: 1,
+      tooltip: 'always',
+      tooltip_position:'bottom',
+      formatter: function(value) {
 
-		return 'Current value: ' + value;
-	}
-});
+        return 'Current value: ' + value;
+      }
+    });
 
-// slider.on("slide", function(sliderValue) {
-// 	document.getElementById("ex1SliderVal").textContent = sliderValue;
-// }
-slider.on("slide",function(sliderValue){
-  var value = ['Male','All','Female'];
-  $('#ex1SliderVal').text(value[sliderValue+1]);
-});
+    // slider.on("slide", function(sliderValue) {
+    // 	document.getElementById("ex1SliderVal").textContent = sliderValue;
+    // }
+    slider.on("slide", function(sliderValue) {
+      var value = ['Male', 'All', 'Female'];
+      $('#ex1SliderVal').text(value[sliderValue + 1]);
+    });
 
-var slider = new Slider("#ex2", {
-	reversed : true
-});
+    var slider = new Slider("#ex2", {
+      reversed: true
+    });
+    var slider3 = new Slider("#ex3", {
+      reversed: true
+    });
+    slider.on("slide",function(sliderValue){
+      if(sliderValue == 3.6)
+      {
+        slider3.setValue(5 - sliderValue);
+      }
+    });
+
+    // var slider21 = new Slider("#ex21");
+    $('#ex21').on("slide",function(sliderValue)
+  {
+    
+  })
   </script>
 </body>
 
