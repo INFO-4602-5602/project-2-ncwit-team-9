@@ -33,9 +33,7 @@
     console.log(data);
     d3.select("#partTwo")
       .append("p")
-      .data(data.filter(function(d) {
-        if (d.inst == "all" && d.gender=="all" && d.study =="freshman")
-        {
+      .data(data.filter(function(d) {        {
           hs_gpa_list.push(d.hs_gpa);
           freshman_list.push(d.avg);
           console.log("Encountered" + d.gender +d.study)
