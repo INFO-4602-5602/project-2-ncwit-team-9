@@ -33,16 +33,18 @@
     console.log(data);
     d3.select("#partTwo")
       .append("p")
-      .data(data.filter(function(d) {        {
+      .data(data.filter(function(d) {
+        if (d.inst == "all" && d.gender=="all" && d.study =="freshman")
+        {
           hs_gpa_list.push(d.hs_gpa);
           freshman_list.push(d.avg);
-          console.log("Encountered" + d.gender +d.study)
+          console.log("Encountered" + d.gender +d.study + "hs_gpa: " + d.hs_gpa)
           return d;
         }
       }))
       .enter()
       .append("div")
-      .text(function(d) { return "Encountered" + d.gender +d.study + " : " + d.avg; });
+      .text(function(d) { return "Encountered" + d.gender +d.study + "hs_gpa: " + d.hs_gpa+ " : " + d.avg; });
   });
   console.log(hs_gpa_list);
 </script>
