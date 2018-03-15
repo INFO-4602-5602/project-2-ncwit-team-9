@@ -1,0 +1,2 @@
+
+    shape-rendering: crispEdges; 
