@@ -1,0 +1,175 @@
+<html>
+
+
+<head>
+    <title>Slider</title>
+		<link rel="stylesheet" type="text/css" href="./sliders.css">
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="./slider.js"></script>
+</head>
+
+<body>
+	<h1>d3 v4 sliders</h1>
+
+	<div id="holder1" class="holder">
+		<div class="subhead">Slider1:Default slider</div>
+		<div class="code">const slider1 = sliderFactory();</br>
+	let slideholder1 = d3.select('#holder1').call(slider1);</div>
+	</div>
+	<div id="holder2" class="holder">
+		<div class="subhead">Slider2: Adds a scale and sets .tick(30) so there are only two ticks</div>
+		<div class="code">const slider2 = sliderFactory();</br>
+	let slideholder2 = d3.select('#holder2').call(slider2.ticks(30).scale(true).range([0,30])
+		);</div>
+	</div>
+	<div id="holder3" class="holder">
+		<div class="subhead">Slider3: Using the .step() parameter to increment the handle moves by to 0.1</div>
+		<div class="code">let slideholder3 = d3.select('#holder3').call(slider3.ticks(1).scale(true).range([0,4]).step(0.1));</div>
+	</div>
+	<div id="holder4" class="holder">
+		<div class="subhead">Slider4: Add labels and preset the value to 30</div>
+			<div class="code">let slideholder4 = d3.select('#holder4').call(slider4.height(70).margin({top: 35, right: 15, bottom: 15, left: 15  }).value(30).ticks(10).scale(true).range([0,80]).step(1).label(true));
+			</div>
+	</div>
+	<div id="holder5" class="holder">
+		<div class="subhead">Slider5: Vertical slider</div>
+			<div class="code">let slideholder5 = d3.select('#holder5').call(slider5.width(80).margin({top: 40, right: 15, bottom: 35, left: 15  }).height(300).scale(true).ticks(20).label(true).value(80).range([0,80]).orient("vertical").dragHandler(function(d) {test(d);}));
+		</div>
+	</div>
+	<h1>Calling functions and making responsive</h1>
+	<div class="intro">Functions are managed using the .dragHandler() property, empty by default. The first time a slider is called it is drawn within an init function, after that each time the slider is called its geometry is handled by a reposition function.
+	</div>
+	<div id="holder6" class="holder">
+		<div class="subhead">Slider6: Calling functions</div>
+		<div id="slideValue" class="subhead">slider value</div>
+		<div class="code">let slideholder6 = d3.select('#holder6').call(slider6.scale(true).step(1).dragHandler(function(d) {getValue(d);}));</br>
+		function getValue(d) {</br>
+		var parseNum = d3.format(".0f");</br>
+		d3.select("#slideValue").text("Slider value "+parseNum(d.value()))
+		}
+		</div>
+	</div>
+	<div id="holder7" class="holder">
+		<div class="subhead">Slider7: Responsive slider</div>
+			<div class="infoText">To make a slider responsive craete a variable to hold the screnwidth and a function that is called each time the brwoser window is resized
+			</div>
+			<div class="code"> let newWidth=document.getElementById('holder1').getBoundingClientRect().width;</br>
+			window.addEventListener('resize', resize);</br>
+			</div>
+			<div class="infoText">Update the screen within the function then call the slider passing the variable using the .width() parameter</div>
+			<div class="code">function resize(){</br>
+				newWidth=document.getElementById('holder1').getBoundingClientRect().width</br>
+				slideholder7.call(slider7.width(newWidth));</br>
+				slideholder8.call(slider8.width(newWidth))</br>
+		}
+
+			</div>
+			<div class="infoText">Then create the slider</div>
+			<div class="code">let slideholder7 = d3.select('#holder7').call(slider7.width(newWidth).scale(true).value(20).step(1));
+		</div>
+	</div>
+	<div id="holder8" class="holder">
+		<div class="subhead">Slider8: Responsive vertical slider</div>
+			<div class="code">let slideholder5 = d3.select('#holder5').call(slider5.width(80).margin({top: 40, right: 15, bottom: 35, left: 15  }).height(300).scale(true).ticks(20).label(true).value(80).range([0,80]).orient("vertical").dragHandler(function(d) {test(d);}));
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+
+
+let newWidth=document.getElementById('holder1').getBoundingClientRect().width
+window.addEventListener('resize', resize);
+
+function resize(){
+	newWidth=document.getElementById('holder1').getBoundingClientRect().width
+	slideholder7.call(slider7.width(newWidth));
+	slideholder8.call(slider8.width(newWidth));
+}
+
+const slider1 = sliderFactory()
+const slider2 = sliderFactory()
+const slider3 = sliderFactory()
+const slider4 = sliderFactory()
+const slider5 = sliderFactory()
+const slider6 = sliderFactory()
+const slider7 = sliderFactory()
+const slider8 = sliderFactory()
+
+		
+let slideholder1 = d3.select('#holder1').call(slider1);
+
+let slideholder2 = d3.select('#holder2').call(slider2
+	.ticks(30)
+	.scale(true)
+	.range([0,30])
+	);
+
+let slideholder3 = d3.select('#holder3').call(slider3
+	.ticks(1)
+	.scale(true)
+	.range([0,4])
+	.step(0.1)
+	);
+
+let slideholder4 = d3.select('#holder4').call(slider4
+	.height(70)
+	.margin({top: 35, right: 15, bottom: 15, left: 15  })
+	.value(2)
+	.ticks(1)
+	.scale(true)
+	.range([0,4])
+	.step(0.1)
+	.label(true)
+	);
+
+let slideholder5 = d3.select('#holder5').call(slider5
+	.width(80)
+	.margin({top: 40, right: 15, bottom: 15, left: 15  })
+	.height(300)
+	.scale(true)
+	.ticks(20)
+	.label(true)
+	.value(10)
+	.range([0,80])
+	.orient("vertical")
+	);
+
+let slideholder6 = d3.select('#holder6').call(slider6
+	.scale(true)
+	.step(1)
+	.dragHandler(function(d) {getValue(d);})
+	);
+
+let slideholder7 = d3.select('#holder7').call(slider7
+	.width(newWidth)
+	.scale(true)
+	.value(20)
+	.step(1)
+	);
+
+let slideholder8 = d3.select('#holder8').call(slider8
+	.width(newWidth)
+	.margin({top: 40, right: 15, bottom: 15, left: 15  })
+	.height(300)
+	.scale(true)
+	.ticks(20)
+	.label(true)
+	.value(50)
+	.range([0,100])
+	.orient("vertical")
+	);
+
+function getValue(d) {
+	var parseNum = d3.format(".0f");
+	console.log (d.value)
+	d3.select("#slideValue").text("Slider value "+parseNum(d.value()))
+}
+
+ 	
+
+</script>
+
+</html>

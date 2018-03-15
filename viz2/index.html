@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Error Bars</title>
+    <title>Viz 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="rangeslider/rangeslider.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+    <style type="text/css" href="rangeslider/rangeslider.css"></style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="plot"></div>
+    <span><div id="slider">
+<input id="ex3" data-slider-id='ex2Slider' type="text" data-slider-min="2.0" data-slider-max="5.0" data-slider-step="0.1" data-slider-value="3.5"  data-slider-orientation="vertical"/>
+    </div>
+    <div id="plot"></div></span>
     <div id="partTwo">
-      
+
     </div>
     <script src="./main.js"></script>
   </body>

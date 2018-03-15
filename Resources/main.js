@@ -6,23 +6,16 @@ var margin = {
     top: 20,
     right: 20,
     bottom: 30,
-    left: 350
+    left: 40
   },
-  width = 700 - margin.left - margin.right,
+  width = 960 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-var slider = new Slider("#ex3", {
-  reversed: true
-});
+	d3.slider().on("slide", function(evt, value) {
+	  d3.select('#slider3text').text(value);
+	})
 
-var selected_hsgpa = 3.5;
-
-slider.on("slide", function(sliderValue) {
-  populateBin("all", "all", sliderValue);
-});
-
-
-function populateBin(typeInst, typeGender, typehsgpa) {
+function populateBin(typeInst,typeGender,typehsgpa) {
   d3.json('../data.json', function(error, data) {
 
     // var xscale_ val = ["freshman","sophomore","junior","senior"];
@@ -31,7 +24,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
     var hs_gpa_list = [];
     var freshman_list = [];
 
-    var tickLabels = ["", "freshman", "sophomore", "junior", "senior"];
+		var tickLabels = ["", "freshman","sophomore","junior","senior"];
 
     console.log(data);
 
@@ -65,12 +58,12 @@ function populateBin(typeInst, typeGender, typehsgpa) {
 
     var yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([2.0, 4.0]).nice();
+      .domain([0, 4.0]).nice();
 
-    var xAxis = d3.axisBottom(xScale).tickFormat(function(d, i) {
-      return tickLabels[i];
-    })
-    yAxis = d3.axisLeft(yScale).ticks(12 * height / width);
+    var xAxis = d3.axisBottom(xScale).tickFormat(function(d,i){
+			return tickLabels[i];
+		})
+      yAxis = d3.axisLeft(yScale).ticks(12 * height / width);
 
     let line = d3.line()
       .x(function(d) {
@@ -80,18 +73,11 @@ function populateBin(typeInst, typeGender, typehsgpa) {
         return yScale(d.y);
       });
 
-    if(d3.select("svg"))
-    {
-      d3.select("svg").remove();
-    }
-      var svg = d3.select("#plot").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-
+    var svg = d3.select("#plot").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     svg.append("g").append("rect").attr("width", width).attr("height", height).attr("class", "plot-bg");
 
@@ -177,17 +163,17 @@ function populateBin(typeInst, typeGender, typehsgpa) {
         return tooltip.style("visibility", "hidden");
       });
 
-    //title
-    svg.append("text")
-      .attr("x", (width / 2))
-      .attr("y", (margin.top / 2))
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .text("Inst : " + typeInst + "| Gender: " + typeGender + "| hs_gpa: " + typehsgpa);
+			//title
+			svg.append("text")
+				.attr("x", (width / 2))
+				.attr("y", (margin.top / 2))
+				.attr("text-anchor", "middle")
+				.style("font-size", "16px")
+				.text("Inst : "+ typeInst +"| Gender: " + typeGender + "| hs_gpa: " + typehsgpa );
 
   });
 
 
 }
 
-populateBin("all", "all", "3.2");
+populateBin("all","all","3.2");
