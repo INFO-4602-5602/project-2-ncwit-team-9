@@ -136,7 +136,7 @@ input: filters for the data
 */
 function populateBin(typeInst, typeGender, typehsgpa) {
   console.log(typeGender);
-  d3.json('../data.json', function(error, data) {
+  d3.json('data.json', function(error, data) {
 
     // var xscale_ val = ["freshman","sophomore","junior","senior"];
     var yscale_val = [];
