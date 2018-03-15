@@ -1,3 +1,10 @@
+
+
+var select_hsgpa = 3.2;
+var select_gender = "all";
+var select_inst = "all";
+
+
 var tooltip = d3.select("body").append("div")
   .attr("class", "tooltip")
   .style("visibility", "hidden");
@@ -6,23 +13,29 @@ var margin = {
     top: 20,
     right: 20,
     bottom: 30,
-    left: 350
+    left: 30
   },
-  width = 700 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  width = 350 - margin.left - margin.right,
+  height = 350 - margin.top - margin.bottom;
 
 var slider = new Slider("#ex3", {
   reversed: true
 });
 
-var selected_hsgpa = 3.5;
+
 
 slider.on("slide", function(sliderValue) {
-  populateBin("all", "all", sliderValue);
+  select_hsgpa = sliderValue;
+  populateBin(select_inst, select_gender, select_hsgpa);
 });
 
+d3.selectAll("input[name='stack']").on("change", function(){
+    select_gender = this.value;
+    populateBin(select_inst, select_gender, select_hsgpa);
+});
 
 function populateBin(typeInst, typeGender, typehsgpa) {
+  console.log(typeGender);
   d3.json('../data.json', function(error, data) {
 
     // var xscale_ val = ["freshman","sophomore","junior","senior"];
@@ -36,7 +49,6 @@ function populateBin(typeInst, typeGender, typehsgpa) {
     console.log(data);
 
     d3.select("#partTwo")
-      .append("p")
       .data(data.filter(function(d) {
         if (d.inst == typeInst && d.gender == typeGender && d.hs_gpa == typehsgpa) {
           // hs_gpa_list.push(d.hs_gpa);
@@ -50,22 +62,17 @@ function populateBin(typeInst, typeGender, typehsgpa) {
           console.log("Encountered : " + d.gender + d.study + "hs_gpa: " + d.hs_gpa + " " + d.avg)
           return d;
         }
-      }))
-      .enter()
-      .append("div")
-      .text(function(d) {
-        return "Encountered : " + d.gender + d.study + "hs_gpa: " + d.hs_gpa + " : " + d.avg;
-      });
+      }));
 
 
 
     var xScale = d3.scaleLinear()
       .range([0, width])
-      .domain([0, 4, 8]);
+      .domain([0, 4.5, 8]);
 
     var yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([2.0, 4.0]).nice();
+      .domain([1.0, 4.0]).nice();
 
     var xAxis = d3.axisBottom(xScale).tickFormat(function(d, i) {
       return tickLabels[i];

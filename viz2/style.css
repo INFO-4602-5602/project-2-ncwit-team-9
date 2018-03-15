@@ -4,7 +4,7 @@ circle {
 
 .error-line {
   stroke: #b30059;
-  stroke-dasharray: 2,2;
+  stroke-dasharray: 2, 2;
 }
 
 .error-cap {
@@ -21,23 +21,52 @@ circle {
   background: #660033;
   color: white;
   font-family: Monospace, Serif;
-  }
-
-.tooltip:after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    right: 100%; /* To the left of the tooltip */
-    margin-top: -10px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent #660033 transparent transparent;
 }
 
- .plot-bg {
-   fill: white;
- }
- /* #slider, #plot
- {
-     display:block-inline;
- } */
+.tooltip:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  /* To the left of the tooltip */
+  margin-top: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #660033 transparent transparent;
+}
+
+.plot-bg {
+  fill: white;
+}
+
+#slider {
+  width: 10%;
+
+}
+
+#slider, #plot {
+  margin-left:  40px;
+  float: left;
+}
+
+#plot{
+  width: 80%;
+}
+
+#left {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    background: grey;
+}
+
+#right {
+    width: 80%;
+    position: absolute;
+    right: 0;
+}
+/* #plot {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+} */
