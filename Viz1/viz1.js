@@ -1,5 +1,5 @@
 var barChartData = [];
-var donutChartData = [];
+var fullData = [];
 var select_gender = "All";
 
 var tooltip = d3.select("body").append("div")
@@ -19,10 +19,24 @@ var margin = {
 	d3.selectAll("input[name='stack']").on("change", function() {
 	  select_gender = this.value;
 		$("#bar").empty();
+		$("#donut").empty();
+		dsDonutChart("2003-2004",select_gender);
 	 dsBarChart(select_gender);
 	});
 
-	function dsDonutChart(){
+	function chosenDonutData(group,gender) {
+	  var ds = [];
+
+	  // console.log(barChartData);
+	  for (x in fullData) {
+	    if (fullData[x].category == group && fullData[x].gender == gender && fullData[x].race != "All") {
+	      ds.push(fullData[x]);
+	    }
+	  }
+	  return ds;
+	}
+
+	function dsDonutChart(school_year,genderType){
 		var 	width = 400,
 			   height = 400,
 			   outerRadius = Math.min(width, height) / 2,
@@ -30,7 +44,9 @@ var margin = {
 			   // for animation
 			   innerRadiusFinal = outerRadius * .5,
 			   innerRadiusFinal3 = outerRadius* .45,
-			   color = d3.scaleOrdinal(d3.schemeCategory20b);   //builtin range of colors
+			   color = d3.scaleOrdinal(d3.schemeCategory20);   //builtin range of colors
+
+		var donutChartData = chosenDonutData(school_year, genderType);
 
 
 		var vis = d3.select("#donut")
@@ -66,7 +82,7 @@ var margin = {
                 .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
                 .attr("d", arc)     //this creates the actual SVG path using the associated data (pie) with the arc drawing function
  					.append("svg:title") //mouseover title showing the figures
- 				   .text(function(d) { return d.data.race + ": " + formatAsPercentage(d.data.measure); });
+ 				   .text(function(d) {return d.data.race + ": " + formatAsPercentage(d.data.measure);});
 
          d3.selectAll("g.slice").selectAll("path").transition()
  			    .duration(750)
@@ -117,6 +133,36 @@ var margin = {
 		        		.attr("d", arcFinal)
 		        		;
 		}
+
+		var legendRectSize = 18;
+				var legendSpacing = 4;
+
+		var legend = vis.selectAll('#legend')
+  .data(color.domain())
+  .enter()
+  .append('g')
+  // .attr('class', 'legend')
+  // .attr('transform', function(d, i) {
+  //   var height = legendRectSize + legendSpacing;
+  //   var offset =  height * color.domain().length / 2;
+  //   var horz = -2 * legendRectSize;
+  //   var vert = i * height - offset;
+  //   return 'translate(' + horz + ',' + vert + ')';
+  // })
+	;
+
+        legend.append('rect')
+  .attr('width', legendRectSize)
+  .attr('height', legendRectSize)
+  .style('fill', color)
+  .style('stroke', color);
+
+        legend.append('text')
+  .attr('x', legendRectSize + legendSpacing)
+  .attr('y', legendRectSize - legendSpacing)
+  .text(function(d) { return d.data.race; });
+
+
 	}
 
 
@@ -125,7 +171,7 @@ d3.json('viz1.json', function(error, data) {
 		.data(data.filter(function(d) {
 			// console.log(d);
 			// console.log(d.Race);
-			donutChartData.push({
+			fullData.push({
 				gender: d.Gender,
 				race: d.Race,
 				category: d.SchoolYear,
@@ -133,7 +179,7 @@ d3.json('viz1.json', function(error, data) {
 			});
 			// console.log(donutChartData);
 		}));
-		dsDonutChart();
+		dsDonutChart("2003-2004",select_gender);
 		});
 
 // set initial group value
@@ -158,7 +204,7 @@ function datasetBarChosen(group,gender) {
       bottom: 20,
       left: 50
     },
-    width = 1000 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = 650 - margin.top - margin.bottom,
     colorBar = d3.schemeCategory20b,
     barPadding = 1;
