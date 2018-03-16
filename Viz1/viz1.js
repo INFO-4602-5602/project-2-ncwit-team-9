@@ -82,7 +82,7 @@ function dsBarChart(genderType) {
   var plot = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  plot.selectAll("rect")
+  plot.selectAll(".bar")
     .data(firstbarChartData)
     .enter()
     .append("rect")
@@ -97,7 +97,7 @@ function dsBarChart(genderType) {
     .attr("height", function(d) {
       return height - yScale(d.measure);
     })
-    .attr("fill", "steelblue");
+		.attr("fill","#9FDD9F");
 
 
   // Add y labels to plot
@@ -156,20 +156,20 @@ function dsBarChart(genderType) {
     .attr("text-anchor", "middle")
     .text("Enrollment");
 
-if(select_gender == "female")
+if(select_gender == "Female")
 {
-	svg.selectAll("bar")
+	svg.selectAll(".bar")
 	.style("fill","#FFB6C1");
 }
-else if(select_gender == "male")
+else if(select_gender == "Male")
 {
-	svg.selectAll("bar")
+	svg.selectAll(".bar")
 	.style("fill","#89cff0");
 }
 
-else if(select_gender == "all")
+else if(select_gender == "All")
 {
-	svg.selectAll("bar")
+	svg.selectAll(".bar")
 	.style("fill","#9FDD9F");
 }
 }
