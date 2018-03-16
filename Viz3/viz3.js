@@ -55,13 +55,15 @@ function dataFilterplot(typeGender, majorSelected, xScale, yScale, svg, data , s
     .attr("d", line)
     .attr('fill', 'none')
     .attr('stroke', select_color)
-    .attr('stroke-width', 2);
+    .attr('stroke-width', 2)
+    .attr("id","path"+majorSelected);
 
   svg.selectAll(".circle")
     .data(_data)
     .enter()
     .append("circle")
     .attr("r", 4)
+    .attr("id","path"+majorSelected)
     .style('fill', select_color)
     .attr("cy", function(d) {
       return yScale(d.y);
@@ -128,32 +130,6 @@ function plotGraph(typeGender) {
 
     var color = d3.scaleOrdinal().range(["#07E71B","#FF5733","#E72E07","#581845","#24EECD","#0FF09A","#F00FF0","#9D919D","#5141F0","#41A0F0", "#13EF10","#EFB210","#EF8A10","#EF10AB","#0C856A","#34660A","#0A4666","#E2ABB5","#E70964","#967FA9","#9BA97F"]);
 
-    // var majorVisible = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,]
-
-    // var listMajor = [{
-  //     name: "Applied Information Technology",
-  //     visible: false
-  //   },
-  //   "Information Technology",
-  //   "Computer Science",
-  //   "Computer Information Systems",
-  //   "Computer Science (BS)",
-  //   "Computer Science (BA)",
-  //   "Web Design/Graphics",
-  //   "Computer Software and Media Applications",
-  //   "Applied Engineering Sciences",
-  //   "Aerospace Engineering",
-  //   "Chemical Engineering",
-  //   "Civil Engineering",
-  //   "Computer Engineering",
-  //   "Software Engineering",
-  //   "Electrical Engineering",
-  //   "Electrical & Computer Engineering",
-  //   "Materials Science and Engineering",
-  //   "Mechanical Engineering",
-  //   "Systems Engineering",
-  //   "Biosystems Engineering"
-  // ];
 
     var listMajor = [{
        name: "Applied Information Technology",
@@ -168,9 +144,9 @@ function plotGraph(typeGender) {
        visible: false
        },
      {name: "Computer Information Systems",visible: false},
-     {name: "Computer Science (BS)",visible: false},
-     {name: "Computer Science (BA)",visible: false},
-     {name: "Web Design/Graphics",visible: false},
+     {name: "Computer Science BS",visible: false},
+     {name: "Computer Science BA",visible: false},
+     {name: "Web Design Graphics",visible: false},
      {name: "Computer Software and Media Applications",visible: false},
      {name: "Applied Engineering Sciences",visible: false},
      {name: "Aerospace Engineering",visible: false},
@@ -286,15 +262,29 @@ function plotGraph(typeGender) {
       .attr("class", "legend-box")
 
       .on("click", function(d) { // On click make d.visible
-        d.visible = !d.visible; // If array key for this data selection is "visible" = true then make it false, if false then make it true
+
         select_color = color(d.name);
+        if(d.visible)
+        {
+          var _id = "#path"+d.name
+          _id = _id.replace(/\ /g,'\\ ');
+          svg.selectAll(_id).remove();
+        }
+        else {
+            dataFilterplot(typeGender,d.name, xScale, yScale, svg, data , select_color);
+        }
+
+
+        d.visible = !d.visible; // If array key for this data selection is "visible" = true then make it false, if false then make it true
+
+
         // maxY = findMaxY(categories); // Find max Y rating value categories data with "visible"; true
         // yScale.domain([0, maxY]); // Redefine yAxis domain based on highest y value of categories data with "visible"; true
         // svg.select(".y.axis")
         //   .transition()
         //   .call(yAxis);
 
-        dataFilterplot(typeGender,d.name, xScale, yScale, svg, data , select_color);
+
 
         issue.select("path")
           .transition()
