@@ -19,9 +19,10 @@ var margin = {
 	d3.selectAll("input[name='stack']").on("change", function() {
 	  select_gender = this.value;
 		$("#bar").empty();
+		dsBarChart(select_gender);
 		$("#donut").empty();
 		dsDonutChart("2003-2004",select_gender);
-	 dsBarChart(select_gender);
+
 	});
 
 	function chosenDonutData(group,gender) {
@@ -137,18 +138,20 @@ var margin = {
 		var legendRectSize = 18;
 				var legendSpacing = 4;
 
-		var legend = vis.selectAll('#legend')
+		var legend = d3.select('#legend')
+		.append("svg:svg")              //create the SVG element inside the <body>
+		// .data(donutChartData)
   .data(color.domain())
   .enter()
   .append('g')
   // .attr('class', 'legend')
-  // .attr('transform', function(d, i) {
-  //   var height = legendRectSize + legendSpacing;
-  //   var offset =  height * color.domain().length / 2;
-  //   var horz = -2 * legendRectSize;
-  //   var vert = i * height - offset;
-  //   return 'translate(' + horz + ',' + vert + ')';
-  // })
+  .attr('transform', function(d, i) {
+    var height = legendRectSize + legendSpacing;
+    var offset =  height * color.domain().length / 2;
+    var horz = -2 * legendRectSize;
+    var vert = i * height - offset;
+    return 'translate(' + horz + ',' + vert + ')';
+  })
 	;
 
         legend.append('rect')
@@ -160,9 +163,7 @@ var margin = {
         legend.append('text')
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing)
-  .text(function(d) { return d.data.race; });
-
-
+  .text(function(d) { return d.race; });
 	}
 
 
@@ -249,7 +250,9 @@ function dsBarChart(genderType) {
     })
     .attr("height", function(d) {
       return height - yScale(d.measure);
-    });
+    })
+			.on("click", update)
+		;
 
   // Add y labels to plot
 
@@ -271,9 +274,13 @@ function dsBarChart(genderType) {
     .attr("class", "yAxis")
   .attr("font-family", "sans-serif")
   .attr("font-size", "11px")
-  .attr("fill", "black");
-  ;
+  .attr("fill", "black")
+	;
 
+	function update(d){
+		$("#donut").empty();
+		dsDonutChart(d.category,genderType);
+	}
   // Add x labels to chart
 
   var xLabels = svg
