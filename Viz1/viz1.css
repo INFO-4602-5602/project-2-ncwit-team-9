@@ -1,7 +1,7 @@
-.bar {
+ bar {
   fill: #9FDD9F;
 }
 
-.bar:hover {
+bar:hover {
   fill: brown;
 }

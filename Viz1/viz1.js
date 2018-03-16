@@ -17,6 +17,7 @@ var margin = {
 	//gender selector
 	d3.selectAll("input[name='stack']").on("change", function() {
 	  select_gender = this.value;
+		$("#bar").empty();
 	 dsBarChart(select_gender);
 	});
 
@@ -82,7 +83,7 @@ function dsBarChart(genderType) {
   var plot = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  plot.selectAll(".bar")
+  plot.selectAll("bar")
     .data(firstbarChartData)
     .enter()
     .append("rect")
@@ -96,8 +97,8 @@ function dsBarChart(genderType) {
     })
     .attr("height", function(d) {
       return height - yScale(d.measure);
-    })
-		.attr("fill","#9FDD9F");
+    });
+
 
 
   // Add y labels to plot
@@ -156,20 +157,20 @@ function dsBarChart(genderType) {
     .attr("text-anchor", "middle")
     .text("Enrollment");
 
-if(select_gender == "Female")
+if(genderType == "Female")
 {
-	svg.selectAll(".bar")
+	svg.selectAll("rect")
 	.style("fill","#FFB6C1");
 }
-else if(select_gender == "Male")
+else if(genderType == "Male")
 {
-	svg.selectAll(".bar")
+	svg.selectAll("rect")
 	.style("fill","#89cff0");
 }
 
-else if(select_gender == "All")
+else if(genderType == "All")
 {
-	svg.selectAll(".bar")
+	svg.selectAll("rect")
 	.style("fill","#9FDD9F");
 }
 }
