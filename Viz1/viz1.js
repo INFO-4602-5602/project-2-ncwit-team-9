@@ -16,7 +16,8 @@ var margin = {
     left: 350
   },
   width = 700 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 500 - margin.top - margin.bottom,
+	radius = Math.min(width, height) / 2;;
 
 	//gender selector
 	d3.selectAll("input[name='stack']").on("change", function() {
@@ -150,35 +151,44 @@ var margin = {
 		      .duration(400)
 		        		.attr("d", arcFinal);}
 
-		var legendRectSize = 18;
-		var legendSpacing = 4;
+	// 	var legendRectSize = 18;
+	// 	var legendSpacing = 4;
+	//
+	// 	var legend = vis.select('#legend')
+	// 	.append("g")              //create the SVG element inside the <body>
+	// 	// .data(donutChartData)
+  // .data(color.domain())
+	//
+  // // .attr('class', 'legend')
+  // .attr('transform', function(d, i) {
+  //   var height = legendRectSize + legendSpacing;
+  //   var offset =  height * color.domain().length / 2;
+  //   var horz = -2 * legendRectSize;
+  //   var vert = i * height - offset;
+  //   return 'translate(' + horz + ',' + vert + ')';
+  // })
+	// ;
+	//
+  //  legend.append('rect')
+  // .attr('width', legendRectSize)
+  // .attr('height', legendRectSize)
+  // .style('fill', color)
+  // .style('stroke', color);
+	//
+  //  legend.append('text')
+  // .attr('x', legendRectSize + legendSpacing)
+  // .attr('y', legendRectSize - legendSpacing)
+  // // .text(function(d) { return d.race; });
+	// .call(d3.legend);
 
-		var legend = vis.selectAll('#legend')
-		.append("g")              //create the SVG element inside the <body>
-		// .data(donutChartData)
-  .data(color.domain())
+	var padding = 20,
+    legx = radius + padding,
+    legend = vis.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(" + legx + ", 0)")
+    .style("font-size", "12px")
+    .call(d3.legend);
 
-  // .attr('class', 'legend')
-  .attr('transform', function(d, i) {
-    var height = legendRectSize + legendSpacing;
-    var offset =  height * color.domain().length / 2;
-    var horz = -2 * legendRectSize;
-    var vert = i * height - offset;
-    return 'translate(' + horz + ',' + vert + ')';
-  })
-	;
-
-   legend.append('rect')
-  .attr('width', legendRectSize)
-  .attr('height', legendRectSize)
-  .style('fill', color)
-  .style('stroke', color);
-
-   legend.append('text')
-  .attr('x', legendRectSize + legendSpacing)
-  .attr('y', legendRectSize - legendSpacing)
-  // .text(function(d) { return d.race; });
-	.call(d3.legend)
 	}
 
 
@@ -296,7 +306,8 @@ function dsBarChart(genderType) {
 
 	function update(d){
 		$("#donut").empty();
-		dsDonutChart(d.category,genderType);
+		school_year=d.category
+		dsDonutChart(school_year,genderType);
 	}
 
   function wrap(text, width) {

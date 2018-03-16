@@ -22,6 +22,10 @@
 	height: 350px;
 }
 
+.legend rect {
+  fill:white;
+  stroke:black;}
+
 .barChart {
 	position:absolute;
 	top:10px;
