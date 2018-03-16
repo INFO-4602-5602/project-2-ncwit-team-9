@@ -153,7 +153,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
     var hs_gpa_list = [];
     var freshman_list = [];
 
-    var tickLabels = ["", "freshman", "sophomore", "junior", "senior"];
+    var tickLabels = ["", "Freshman", "Sophomore", "Junior", "Senior"];
 
     d3.select("#partTwo")
       .data(data.filter(function(d) {
@@ -291,7 +291,9 @@ function populateBin(typeInst, typeGender, typehsgpa) {
         return tooltip.style("visibility", "hidden");
       })
 
-
+      function capitalizeFirstLetter(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+      }
     //title
     svg.append("text")
       .attr("x", (width / 2))
@@ -299,7 +301,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
       .attr("text-anchor", "middle")
       .attr("font-weight","bold")
       .style("font-size", "16px")
-      .text("Inst : " + typeInst + " | Gender: " + typeGender + " | hs_gpa: " + typehsgpa);
+      .text("Institution : " + capitalizeFirstLetter(typeInst) + " | Gender: " + capitalizeFirstLetter(typeGender) + " | High School GPA: " + typehsgpa);
 
     if(select_gender == "female")
     {

@@ -21,6 +21,10 @@ d3.selectAll("input[name='stack']").on("change", function() {
   plotGraph(select_gender);
 });
 
+var tooltip = d3.select("body").append("div")
+  .attr("class", "tooltip1")
+  .style("visibility", "hidden");
+
 
 
 function dataFilterplot(typeGender, majorSelected, xScale, yScale, svg, data , select_color) {
@@ -72,7 +76,15 @@ function dataFilterplot(typeGender, majorSelected, xScale, yScale, svg, data , s
     .attr("cx", function(d, i) {
       return xScale(d.x);
     })
-
+    .on("mouseover", function(d) {
+      return tooltip.html("Count: "+d.y)
+        .style("visibility", "visible")
+        .style("top", (event.pageY - 17) + "px")
+        .style("left", (event.pageX + 25) + "px");
+  })
+  .on("mouseout", function() {
+    return tooltip.style("visibility", "hidden");
+  })
     ;
 
 
@@ -122,8 +134,8 @@ function plotGraph(typeGender) {
     var count = 1;
     var freshman_list = [];
 
-    var tickLabels = ["", "freshman", "sophomore", "junior", "senior"];
-    console.log(tickLabels);
+    var tickLabels = ["", "Freshman", "Sophomore", "Junior", "Senior"];
+
 
     var xScale = d3.scaleLinear().range([0, width]).domain([0, 4.5, 8]);
 
