@@ -1,1 +1,3 @@
 http://bl.ocks.org/jonahwilliams/2f16643b999ada7b1909
+
+viz 3 line chart: http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4
