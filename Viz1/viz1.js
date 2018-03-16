@@ -74,7 +74,7 @@ function dsDonutChart(school_year, genderType) {
     .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")") //move the center of the pie chart from 0, 0 to radius, radius
   ;
 
-
+ $("#legend").empty();
   var legend_svg = d3.select("#legend")
   .append("svg") //create the SVG element inside the <body>
   //associate our data with the document
