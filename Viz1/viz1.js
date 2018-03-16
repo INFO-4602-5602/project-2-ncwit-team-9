@@ -1,5 +1,5 @@
 var barChartData = [];
-
+var select_gender = "All";
 
 var tooltip = d3.select("body").append("div")
   .attr("class", "tooltip")
@@ -14,24 +14,21 @@ var margin = {
   width = 700 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-
-
-function populateData() {
-
-  // console.log(barChartData);
-
-}
-
+	//gender selector
+	d3.selectAll("input[name='stack']").on("change", function() {
+	  select_gender = this.value;
+	 dsBarChart(select_gender);
+	});
 
 // set initial group value
 var group = "All";
 
-function datasetBarChosen(group) {
+function datasetBarChosen(group,gender) {
   var ds = [];
 
   // console.log(barChartData);
   for (x in barChartData) {
-    if (barChartData[x].race == group) {
+    if (barChartData[x].race == group && barChartData[x].gender == gender) {
       ds.push(barChartData[x]);
     }
   }
@@ -39,39 +36,23 @@ function datasetBarChosen(group) {
 }
 
 
-function dsBarChartBasics() {
-
   var margin = {
       top: 30,
       right: 5,
       bottom: 20,
       left: 50
     },
-    width = 3000 - margin.left - margin.right,
+    width = 1000 - margin.left - margin.right,
     height = 650 - margin.top - margin.bottom,
     colorBar = d3.schemeCategory20b,
     barPadding = 1;
 
-  return {
-    margin: margin,
-    width: width,
-    height: height,
-    colorBar: colorBar,
-    barPadding: barPadding
-  };
-}
 
-function dsBarChart() {
 
-  var firstbarChartData = datasetBarChosen(group);
+function dsBarChart(genderType) {
 
-  var basics = dsBarChartBasics();
+	var firstbarChartData = datasetBarChosen(group, genderType);
 
-  var margin = basics.margin,
-    width = basics.width,
-    height = basics.height,
-    colorBar = basics.colorBar,
-    barPadding = basics.barPadding;
 
   var xScale = d3.scaleLinear()
     .domain([0, firstbarChartData.length])
@@ -174,20 +155,38 @@ function dsBarChart() {
     .attr("class", "title")
     .attr("text-anchor", "middle")
     .text("Enrollment");
+
+if(select_gender == "female")
+{
+	svg.selectAll("bar")
+	.style("fill","#FFB6C1");
 }
-populateData();
+else if(select_gender == "male")
+{
+	svg.selectAll("bar")
+	.style("fill","#89cff0");
+}
+
+else if(select_gender == "all")
+{
+	svg.selectAll("bar")
+	.style("fill","#9FDD9F");
+}
+}
+
 d3.json('viz1.json', function(error, data) {
   d3.select("#bar")
     .data(data.filter(function(d) {
       // console.log(d);
       // console.log(d.Race);
       barChartData.push({
+				gender: d.Gender,
         race: d.Race,
         category: d.SchoolYear,
         measure: d.Enrollment
       });
       // console.log(barChartData);
     }));
+dsBarChart(select_gender);
 
-    dsBarChart();
 });
