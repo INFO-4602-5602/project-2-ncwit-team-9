@@ -18,7 +18,7 @@ var margin = {
     left: 350
   },
   width = 700 - margin.left - margin.right,
-  height = 600 - margin.top - margin.bottom;
+  height = 500 - margin.top - margin.bottom;
 
 	//gender selector
 	d3.selectAll("input[name='stack']").on("change", function() {
@@ -236,7 +236,7 @@ function datasetBarChosen(group,gender) {
   var margin = {
       top: 30,
       right: 5,
-      bottom: 20,
+      bottom: 90,
       left: 50
     },
     width = 700 - margin.left - margin.right,
@@ -247,6 +247,7 @@ function datasetBarChosen(group,gender) {
 
 
 function dsBarChart(genderType) {
+
 
 	var firstbarChartData = datasetBarChosen(group, genderType);
 
@@ -266,7 +267,7 @@ function dsBarChart(genderType) {
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
-
+    var bar_width = width / firstbarChartData.length - barPadding;
   var plot = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -309,6 +310,7 @@ function dsBarChart(genderType) {
   .attr("font-family", "sans-serif")
   .attr("font-size", "11px")
   .attr("fill", "black")
+  .attr("font-weight","bold")
 	;
 
 	function update(d){
@@ -352,15 +354,17 @@ function dsBarChart(genderType) {
   	  .data(firstbarChartData)
   	  .enter()
   	  .append("text")
+      // .attr("")
   	  .text(function(d) { return d.category;})
   	  .style("text-anchor", "end")
   		// Set x position to the left edge of each bar plus half the bar width
   					   .attr("y", function(d, i) {
   					   		return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
   					   })
-  	  .attr("x", 15)
+  	  .attr("x", 10)
   	  .attr("transform","rotate(-90)")
-      .call(wrap, 5);
+      .attr("font-weight","bold")
+      .call(wrap, bar_width);
 
   //
   // svg.append("g")
@@ -380,7 +384,9 @@ function dsBarChart(genderType) {
     .attr("y", 15)
     .attr("class", "title")
     .attr("text-anchor", "middle")
-    .text("Enrollment");
+    .style("font-size", "16px")
+    .attr("font-weight","bold")
+    .text("Enrollment details for  " +  genderType+ " students.");
 
 if(genderType == "Female")
 {
