@@ -24,12 +24,12 @@ function populateData() {
 
 
 // set initial group value
-var group = "Asian";
+var group = "All";
 
 function datasetBarChosen(group) {
   var ds = [];
 
-  console.log(barChartData);
+  // console.log(barChartData);
   for (x in barChartData) {
     if (barChartData[x].race == group) {
       ds.push(barChartData[x]);
@@ -47,8 +47,8 @@ function dsBarChartBasics() {
       bottom: 20,
       left: 50
     },
-    width = 500 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom,
+    width = 3000 - margin.left - margin.right,
+    height = 650 - margin.top - margin.bottom,
     colorBar = d3.schemeCategory20b,
     barPadding = 1;
 
@@ -101,12 +101,12 @@ function dsBarChart() {
   var plot = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  plot.selectAll(".bar")
+  plot.selectAll("rect")
     .data(firstbarChartData)
     .enter()
     .append("rect")
     .attr("x", function(d, i) {
-      console.log(i);
+      // console.log(i);
       return xScale(i);
     })
     .attr("width", width / firstbarChartData.length - barPadding)
@@ -116,7 +116,7 @@ function dsBarChart() {
     .attr("height", function(d) {
       return height - yScale(d.measure);
     })
-    .attr("fill", "black");
+    .attr("fill", "steelblue");
 
 
   // Add y labels to plot
@@ -126,7 +126,7 @@ function dsBarChart() {
     .enter()
     .append("text")
     .text(function(d) {
-      return formatAsInteger(d3.round(d.measure));
+      return d.measure;
     })
     .attr("text-anchor", "middle")
     // Set x position to the left edge of each bar plus half the bar width
@@ -146,25 +146,25 @@ function dsBarChart() {
 
   // Add x labels to chart
 
-  // var xLabels = svg
-  // 	    .append("g")
-  // 	    .attr("transform", "translate(" + margin.left + "," + (margin.top + height)  + ")")
-  // 	    ;
-  //
-  // xLabels.selectAll("text.xAxis")
-  // 	  .data(firstbarChartData)
-  // 	  .enter()
-  // 	  .append("text")
-  // 	  .text(function(d) { return d.category;})
-  // 	  .attr("text-anchor", "middle")
-  // 		// Set x position to the left edge of each bar plus half the bar width
-  // 					   .attr("x", function(d, i) {
-  // 					   		return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
-  // 					   })
-  // 	  .attr("y", 15)
-  // 	  .attr("class", "xAxis")
-  // 	  //.attr("style", "font-size: 12; font-family: Helvetica, sans-serif")
-  // 	  ;
+  var xLabels = svg
+  	    .append("g")
+  	    .attr("transform", "translate(" + margin.left + "," + (margin.top + height)  + ")")
+  	    ;
+
+  xLabels.selectAll("text.xAxis")
+  	  .data(firstbarChartData)
+  	  .enter()
+  	  .append("text")
+  	  .text(function(d) { return d.category;})
+  	  .attr("text-anchor", "middle")
+  		// Set x position to the left edge of each bar plus half the bar width
+  					   .attr("x", function(d, i) {
+  					   		return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
+  					   })
+  	  .attr("y", 15)
+  	  .attr("class", "xAxis")
+  	  //.attr("style", "font-size: 12; font-family: Helvetica, sans-serif")
+  	  ;
 
   // Title
 
@@ -180,13 +180,13 @@ d3.json('viz1.json', function(error, data) {
   d3.select("#bar")
     .data(data.filter(function(d) {
       // console.log(d);
-      console.log(d.Race);
+      // console.log(d.Race);
       barChartData.push({
         race: d.Race,
         category: d.SchoolYear,
         measure: d.Enrollment
       });
-      console.log(barChartData);
+      // console.log(barChartData);
     }));
 
     dsBarChart();
