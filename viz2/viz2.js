@@ -3,6 +3,12 @@ var select_hsgpa = 3.2;
 var select_gender = "all";
 var select_inst = "all";
 
+d3.select("#hs_gpa_val")
+.text(select_hsgpa);
+
+
+
+
 //dropdown option
 var dropdown_options = [{
     value: "all",
@@ -112,6 +118,8 @@ d3.select("#inst_dropdown ")
 slider.on("slide", function(sliderValue) {
   select_hsgpa = sliderValue;
   populateBin(select_inst, select_gender, select_hsgpa);
+  d3.select("#hs_gpa_val")
+  .text(select_hsgpa);
 });
 
 //gender selector
