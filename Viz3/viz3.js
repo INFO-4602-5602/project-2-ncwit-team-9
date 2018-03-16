@@ -146,7 +146,7 @@ function plotGraph(typeGender) {
      {name: "Computer Information Systems",visible: false},
      {name: "Computer Science BS",visible: false},
      {name: "Computer Science BA",visible: false},
-     {name: "Web Design Graphics",visible: false},
+     {name: "CS and or Eng Multiple Majors data submitted in aggregation",visible: false},
      {name: "Computer Software and Media Applications",visible: false},
      {name: "Applied Engineering Sciences",visible: false},
      {name: "Aerospace Engineering",visible: false},
@@ -278,7 +278,7 @@ function plotGraph(typeGender) {
         d.visible = !d.visible; // If array key for this data selection is "visible" = true then make it false, if false then make it true
 
 
-        // maxY = findMaxY(categories); // Find max Y rating value categories data with "visible"; true
+        // maxY = findMaxY(data); // Find max Y rating value categories data with "visible"; true
         // yScale.domain([0, maxY]); // Redefine yAxis domain based on highest y value of categories data with "visible"; true
         // svg.select(".y.axis")
         //   .transition()
