@@ -136,9 +136,20 @@ var margin = {
  		vis.append("svg:text")
  	     	.attr("dy", ".35em")
  	      .attr("text-anchor", "middle")
- 	      .text("Demographic Enrollment for ")
+        .attr("font-weight","bold")
+        .style("font-size", "16px")
+ 	      .text("Demographic Enrollment")
  	      .attr("class","title")
  	      ;
+
+        vis.append("svg:text")
+     	     	.attr("dy", "1.75em")
+     	      .attr("text-anchor", "middle")
+            .attr("font-weight","bold")
+            .style("font-size", "16px")
+     	      .text(school_year)
+     	      .attr("class","title")
+     	      ;
 
 		function mouseover() {
 		  d3.select(this).select("path").transition()
