@@ -119,11 +119,9 @@ function dsBarChart(genderType) {
       return yScale(d.measure) + 14;
     })
     .attr("class", "yAxis")
-  /* moved to CSS
   .attr("font-family", "sans-serif")
   .attr("font-size", "11px")
-  .attr("fill", "white")
-  */
+  .attr("fill", "black");
   ;
 
   // Add x labels to chart
@@ -176,6 +174,15 @@ else if(genderType == "All")
 }
 
 d3.json('viz1.json', function(error, data) {
+  function compare(a,b)
+    {
+      if(a.SchoolYear > b.SchoolYear)
+        return 1;
+      else {
+        return -1;
+      }
+    }
+  data.sort(compare);
   d3.select("#bar")
     .data(data.filter(function(d) {
       // console.log(d);
