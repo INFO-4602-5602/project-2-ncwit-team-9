@@ -3,6 +3,12 @@ var select_hsgpa = 3.2;
 var select_gender = "all";
 var select_inst = "all";
 
+d3.select("#hs_gpa_val")
+.text(select_hsgpa);
+
+
+
+
 //dropdown option
 var dropdown_options = [{
     value: "all",
@@ -89,7 +95,8 @@ var margin = {
 
 //slider reversing the value
 var slider = new Slider("#ex3", {
-  reversed: true
+  reversed: true,
+  tooltip: 'always'
 });
 
 //dropdown filling
@@ -111,6 +118,8 @@ d3.select("#inst_dropdown ")
 slider.on("slide", function(sliderValue) {
   select_hsgpa = sliderValue;
   populateBin(select_inst, select_gender, select_hsgpa);
+  d3.select("#hs_gpa_val")
+  .text(select_hsgpa);
 });
 
 //gender selector
@@ -169,7 +178,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
 
     var yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([1.0, 4.0]).nice();
+      .domain([0.0, 4.2]).nice();
 
     var xAxis = d3.axisBottom(xScale).tickFormat(function(d, i) {
       return tickLabels[i];
@@ -272,7 +281,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
       .attr("cy", function(d) {
         return yScale(d.y);
       })
-      .attr("r", 4)
+      .attr("r", 5)
       .on("mouseover", function(d) {
         return tooltip.html(d.y.toFixed(3) + " &plusmn; " + d.e.toFixed(3))
           .style("visibility", "visible")
@@ -280,13 +289,15 @@ function populateBin(typeInst, typeGender, typehsgpa) {
       })
       .on("mouseout", function() {
         return tooltip.style("visibility", "hidden");
-      });
+      })
+
 
     //title
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", (margin.top / 2))
+      .attr("y", (margin.top/ 2)-10)
       .attr("text-anchor", "middle")
+      .attr("font-weight","bold")
       .style("font-size", "16px")
       .text("Inst : " + typeInst + " | Gender: " + typeGender + " | hs_gpa: " + typehsgpa);
 
