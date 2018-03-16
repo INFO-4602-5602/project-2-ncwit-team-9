@@ -89,7 +89,8 @@ var margin = {
 
 //slider reversing the value
 var slider = new Slider("#ex3", {
-  reversed: true
+  reversed: true,
+  tooltip: 'always'
 });
 
 //dropdown filling
@@ -272,7 +273,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
       .attr("cy", function(d) {
         return yScale(d.y);
       })
-      .attr("r", 4)
+      .attr("r", 5)
       .on("mouseover", function(d) {
         return tooltip.html(d.y.toFixed(3) + " &plusmn; " + d.e.toFixed(3))
           .style("visibility", "visible")
@@ -280,13 +281,15 @@ function populateBin(typeInst, typeGender, typehsgpa) {
       })
       .on("mouseout", function() {
         return tooltip.style("visibility", "hidden");
-      });
+      })
+
 
     //title
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", (margin.top / 2))
+      .attr("y", (margin.top/ 2)-10)
       .attr("text-anchor", "middle")
+      .attr("font-weight","bold")
       .style("font-size", "16px")
       .text("Inst : " + typeInst + " | Gender: " + typeGender + " | hs_gpa: " + typehsgpa);
 

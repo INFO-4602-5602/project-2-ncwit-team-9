@@ -4,22 +4,22 @@ circle {
 
 .error-line {
   stroke: #b30059;
-  stroke-dasharray: 2, 2;
+  stroke-dasharray: 4, 2;
 }
 
 .error-cap {
   stroke: #b30059;
-  stroke-width: 2px;
+  stroke-width: 4px;
   stroke-type: solid;
 }
 
 .tooltip1 {
-  position: absolute !important;
-  height: auto !important;
-  width: auto !important;
-  padding: 15px !important;
-  background: #36384C !important;
-  color: white !important;
+  position: absolute ;
+  height: auto ;
+  width: auto ;
+  padding: 15px ;
+  background: #36384C ;
+  color: black ;
   /* font-family: Monospace, Serif; */
 }
 
@@ -138,4 +138,10 @@ circle {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+/* Slider manip */
+.slider.slider-vertical {
+  height: 510px;
+  width: 20px;
 }
