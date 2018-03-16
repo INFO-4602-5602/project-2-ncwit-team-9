@@ -21,6 +21,110 @@ var margin = {
 	 dsBarChart(select_gender);
 	});
 
+	function dsPieChart(){
+
+		var 	width = 400,
+			   height = 400,
+			   outerRadius = Math.min(width, height) / 2,
+			   innerRadius = outerRadius * .999,
+			   // for animation
+			   innerRadiusFinal = outerRadius * .5,
+			   innerRadiusFinal3 = outerRadius* .45,
+			   color = d3.schemeCategory20b();   //builtin range of colors
+
+
+		var vis = d3.select("#pieChart")
+		     .append("svg:svg")              //create the SVG element inside the <body>
+		     .data([dataset])                   //associate our data with the document
+		         .attr("width", width)           //set the width and height of our visualization (these will be attributes of the <svg> tag
+		         .attr("height", height)
+		     		.append("svg:g")                //make a group to hold our pie chart
+		         .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")")    //move the center of the pie chart from 0, 0 to radius, radius
+					;
+
+	   var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
+	        	.outerRadius(outerRadius).innerRadius(innerRadius);
+
+	   // for animation
+	   var arcFinal = d3.svg.arc().innerRadius(innerRadiusFinal).outerRadius(outerRadius);
+		var arcFinal3 = d3.svg.arc().innerRadius(innerRadiusFinal3).outerRadius(outerRadius);
+
+	   var pie = d3.layout.pie()           //this will create arc data for us given a list of values
+	        .value(function(d) { return d.measure; });    //we must tell it out to access the value of each element in our data array
+
+	   var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
+	        .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
+	        .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+	            .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+	               .attr("class", "slice")    //allow us to style things in the slices (like text)
+	               .on("mouseover", mouseover)
+	    				.on("mouseout", mouseout)
+	    				.on("click", up)
+	    				;
+
+	        arcs.append("svg:path")
+	               .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
+	               .attr("d", arc)     //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+						.append("svg:title") //mouseover title showing the figures
+					   .text(function(d) { return d.data.category + ": " + formatAsPercentage(d.data.measure); });
+
+	        d3.selectAll("g.slice").selectAll("path").transition()
+				    .duration(750)
+				    .delay(10)
+				    .attr("d", arcFinal )
+				    ;
+
+		  // Add a label to the larger arcs, translated to the arc centroid and rotated.
+		  // source: http://bl.ocks.org/1305337#index.html
+		  arcs.filter(function(d) { return d.endAngle - d.startAngle > .2; })
+		  		.append("svg:text")
+		      .attr("dy", ".35em")
+		      .attr("text-anchor", "middle")
+		      .attr("transform", function(d) { return "translate(" + arcFinal.centroid(d) + ")rotate(" + angle(d) + ")"; })
+		      //.text(function(d) { return formatAsPercentage(d.value); })
+		      .text(function(d) { return d.data.category; })
+		      ;
+
+		   // Computes the label angle of an arc, converting from radians to degrees.
+			function angle(d) {
+			    var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
+			    return a > 90 ? a - 180 : a;
+			}
+
+
+			// Pie chart title
+			vis.append("svg:text")
+		     	.attr("dy", ".35em")
+		      .attr("text-anchor", "middle")
+		      .text("Demographic Enrollment")
+		      .attr("class","title")
+		      ;
+
+		function mouseover() {
+		  d3.select(this).select("path").transition()
+		      .duration(750)
+		        		//.attr("stroke","red")
+		        		//.attr("stroke-width", 1.5)
+		        		.attr("d", arcFinal3)
+		        		;
+		}
+
+		function mouseout() {
+		  d3.select(this).select("path").transition()
+		      .duration(750)
+		        		//.attr("stroke","blue")
+		        		//.attr("stroke-width", 1.5)
+		        		.attr("d", arcFinal)
+		        		;
+		}
+
+		function up(d, i) {
+					updateBarChart(d.data.category, color(i));
+					updateLineChart(d.data.category, color(i));
+
+		}
+	}
+
 // set initial group value
 var group = "All";
 
@@ -58,19 +162,10 @@ function dsBarChart(genderType) {
   var xScale = d3.scaleLinear()
     .domain([0, firstbarChartData.length])
     .range([0, width]);
-
-  // Create linear y scale
-  // Purpose: No matter what the data is, the bar should fit into the svg area; bars should not
-  // get higher than the svg height. Hence incoming data needs to be scaled to fit into the svg area.
   var yScale = d3.scaleLinear()
-    // use the max funtion to derive end point of the domain (max value of the dataset)
-    // do not use the min value of the dataset as min of the domain as otherwise you will not see the first bar
     .domain([0, d3.max(firstbarChartData, function(d) {
       return d.measure;
     })])
-    // As coordinates are always defined from the top left corner, the y position of the bar
-    // is the svg height minus the data value. So you basically draw the bar starting from the top.
-    // To have the y position calculated by the range function
     .range([height, 0]);
 
   //Create SVG element
@@ -99,8 +194,6 @@ function dsBarChart(genderType) {
       return height - yScale(d.measure);
     });
 
-
-
   // Add y labels to plot
 
   plot.selectAll("text")
@@ -128,26 +221,22 @@ function dsBarChart(genderType) {
 
   var xLabels = svg
   	    .append("g")
+				.attr("class", "x axis")
   	    .attr("transform", "translate(" + margin.left + "," + (margin.top + height)  + ")")
-  	    ;
-
-  xLabels.selectAll("text.xAxis")
+  	    .selectAll("text.xAxis")
   	  .data(firstbarChartData)
   	  .enter()
   	  .append("text")
   	  .text(function(d) { return d.category;})
-  	  .attr("text-anchor", "middle")
+  	  .style("text-anchor", "end")
   		// Set x position to the left edge of each bar plus half the bar width
   					   .attr("x", function(d, i) {
   					   		return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
   					   })
   	  .attr("y", 15)
-  	  .attr("class", "xAxis")
-  	  //.attr("style", "font-size: 12; font-family: Helvetica, sans-serif")
-  	  ;
+  	  .attr("transform","rotate(-45)");
 
   // Title
-
   svg.append("text")
     .attr("x", (width + margin.left + margin.right) / 2)
     .attr("y", 15)
