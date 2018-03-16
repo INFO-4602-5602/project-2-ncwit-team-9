@@ -17,6 +17,7 @@ var margin = {
 //gender selector
 d3.selectAll("input[name='stack']").on("change", function() {
   select_gender = this.value;
+  $("#dropouts").empty();
   plotGraph(select_gender);
 });
 
