@@ -170,7 +170,7 @@ function populateBin(typeInst, typeGender, typehsgpa) {
 
     var yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([1.0, 4.0]).nice();
+      .domain([0.0, 4.2]).nice();
 
     var xAxis = d3.axisBottom(xScale).tickFormat(function(d, i) {
       return tickLabels[i];
