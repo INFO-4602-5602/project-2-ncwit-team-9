@@ -14,11 +14,11 @@ var 	formatAsPercentage = d3.format("%");
 var margin = {
     top: 20,
     right: 20,
-    bottom: 30,
+    bottom: 0,
     left: 350
   },
   width = 700 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 600 - margin.top - margin.bottom;
 
 	//gender selector
 	d3.selectAll("input[name='stack']").on("change", function() {
@@ -315,11 +315,38 @@ function dsBarChart(genderType) {
 		$("#donut").empty();
 		dsDonutChart(d.category,genderType);
 	}
+
+  function wrap(text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+      }
+    }
+  });
+}
+
   // Add x labels to chart
 
   var xLabels = svg
   	    .append("g")
 				.attr("class", "x axis")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
   	    .attr("transform", "translate(" + margin.left + "," + (margin.top + height)  + ")")
   	    .selectAll("text.xAxis")
   	  .data(firstbarChartData)
@@ -328,11 +355,24 @@ function dsBarChart(genderType) {
   	  .text(function(d) { return d.category;})
   	  .style("text-anchor", "end")
   		// Set x position to the left edge of each bar plus half the bar width
-  					   .attr("x", function(d, i) {
+  					   .attr("y", function(d, i) {
   					   		return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
   					   })
-  	  .attr("y", 15)
-  	  .attr("transform","rotate(0)");
+  	  .attr("x", 15)
+  	  .attr("transform","rotate(-90)")
+      .call(wrap, 5);
+
+  //
+  // svg.append("g")
+  //     .attr("class", "x axis")
+  //     .attr("transform", "translate(0," + height + ")")
+  //     .call(xAxis)
+  //   .selectAll("text")
+  //     .attr("y", 0)
+  //     .attr("x", 9)
+  //     .attr("dy", ".35em")
+  //     .attr("transform", "rotate(90)")
+  //     .style("text-anchor", "start");
 
   // Title
   svg.append("text")
