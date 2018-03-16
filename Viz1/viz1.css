@@ -8,15 +8,23 @@
 
 .donutChart {
 	position:absolute;
-	top:10px;
-	left:10px;
+	top:30px;
+	left:40px;
 	width:400px;
 	height: 400px;
 }
 
+.legendSpace {
+	position:absolute;
+	top:440px;
+	left:40px;
+	width:400px;
+	height: 350px;
+}
+
 .barChart {
 	position:absolute;
-	top:160px;
+	top:10px;
 	left:410px;
 	height: 250px;
 }
