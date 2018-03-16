@@ -1,16 +1,14 @@
 var barChartData = [];
 var fullData = [];
-var select_gender = "All";
-
-
+var select_gender = "all";
+var school_year = "2003-2004";
 var sum = 0;
-
 
 var tooltip = d3.select("body").append("div")
   .attr("class", "tooltip1")
   .style("visibility", "hidden");
 
-var 	formatAsPercentage = d3.format("%");
+var formatAsPercentage = d3.format(".2%");
 var margin = {
     top: 20,
     right: 20,
@@ -26,28 +24,25 @@ var margin = {
 		$("#bar").empty();
 		dsBarChart(select_gender);
 		$("#donut").empty();
-		dsDonutChart("2003-2004",select_gender);
+		dsDonutChart(school_year,select_gender);
 
 	});
 
 	function chosenDonutData(group,gender) {
 	  var ds = [];
     sum = 0;
-
 	  // console.log(barChartData);
 	  for (x in fullData) {
-	    if (fullData[x].category == group && fullData[x].gender == gender && fullData[x].race != "All") {
+	    if (fullData[x].category == group && fullData[x].gender == gender && fullData[x].race != "all") {
 
         sum = sum + fullData[x].measure;
 	      ds.push(fullData[x]);
-	    }
-	  }
-
+	    } }
     for (x in ds)
     {
       ds[x].measure = ds[x].measure/sum;
-      console.log(sum);
-      console.log(ds[x].measure);
+      // console.log(sum);
+      // console.log(ds[x].measure);
     }
 	  return ds;
 	}
@@ -60,7 +55,8 @@ var margin = {
 			   // for animation
 			   innerRadiusFinal = outerRadius * .5,
 			   innerRadiusFinal3 = outerRadius* .45,
-			   color = d3.scaleOrdinal(d3.schemeCategory20);   //builtin range of colors
+			   color = d3.scaleOrdinal(d3.schemePastel1);   //builtin range of colors
+				 // color = d3.scaleSequential(d3.interpolateInferno).domain([0, width]);
 
 		var donutChartData = chosenDonutData(school_year, genderType);
 
@@ -112,7 +108,7 @@ var margin = {
  			    .duration(750)
  			    .delay(10)
  			    .attr("d", arcFinal )
- 			    ;
+					.attr("data-legend",function(d) { return d.race});
 
  	  // Add a label to the larger arcs, translated to the arc centroid and rotated.
  	  // source: http://bl.ocks.org/1305337#index.html
@@ -120,17 +116,12 @@ var margin = {
  	  		.append("svg:text")
  	      .attr("dy", ".35em")
  	      .attr("text-anchor", "middle")
- 	      .attr("transform", function(d) { return "translate(" + arcFinal.centroid(d) + ")rotate(" + angle(d) + ")"; })
- 	      //.text(function(d) { return formatAsPercentage(d.value); })
- 	      .text(function(d) { return d.data.race; })
- 	      ;
+ 	      .attr("transform", function(d) { return "translate(" + arcFinal.centroid(d) + ")rotate(" + angle(d) + ")"; });
 
  	   // Computes the label angle of an arc, converting from radians to degrees.
  		function angle(d) {
  		    var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
- 		    return a > 90 ? a - 180 : a;
- 		}
-
+ 		    return a > 90 ? a - 180 : a;}
 
  		// Pie chart title
  		vis.append("svg:text")
@@ -139,8 +130,7 @@ var margin = {
         .attr("font-weight","bold")
         .style("font-size", "16px")
  	      .text("Demographic Enrollment")
- 	      .attr("class","title")
- 	      ;
+ 	      .attr("class","title");
 
         vis.append("svg:text")
      	     	.attr("dy", "1.75em")
@@ -148,36 +138,26 @@ var margin = {
             .attr("font-weight","bold")
             .style("font-size", "16px")
      	      .text(school_year)
-     	      .attr("class","title")
-     	      ;
+     	      .attr("class","title");
 
 		function mouseover() {
 		  d3.select(this).select("path").transition()
-		      .duration(750)
-		        		//.attr("stroke","red")
-		        		//.attr("stroke-width", 1.5)
-		        		.attr("d", arcFinal3)
-		        		;
-		}
+		      .duration(400)
+		        		.attr("d", arcFinal3);}
 
 		function mouseout() {
 		  d3.select(this).select("path").transition()
-		      .duration(750)
-		        		//.attr("stroke","blue")
-		        		//.attr("stroke-width", 1.5)
-		        		.attr("d", arcFinal)
-		        		;
-		}
+		      .duration(400)
+		        		.attr("d", arcFinal);}
 
 		var legendRectSize = 18;
-				var legendSpacing = 4;
+		var legendSpacing = 4;
 
-		var legend = d3.select('#legend')
-		.append("svg:svg")              //create the SVG element inside the <body>
+		var legend = vis.selectAll('#legend')
+		.append("g")              //create the SVG element inside the <body>
 		// .data(donutChartData)
   .data(color.domain())
-  .enter()
-  .append('g')
+
   // .attr('class', 'legend')
   .attr('transform', function(d, i) {
     var height = legendRectSize + legendSpacing;
@@ -188,16 +168,17 @@ var margin = {
   })
 	;
 
-        legend.append('rect')
+   legend.append('rect')
   .attr('width', legendRectSize)
   .attr('height', legendRectSize)
   .style('fill', color)
   .style('stroke', color);
 
-        legend.append('text')
+   legend.append('text')
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing)
-  .text(function(d) { return d.race; });
+  // .text(function(d) { return d.race; });
+	.call(d3.legend)
 	}
 
 
@@ -214,11 +195,11 @@ d3.json('viz1.json', function(error, data) {
 			});
 			// console.log(donutChartData);
 		}));
-		dsDonutChart("2003-2004",select_gender);
+		dsDonutChart(school_year,select_gender);
 		});
 
 // set initial group value
-var group = "All";
+var group = "all";
 
 function datasetBarChosen(group,gender) {
   var ds = [];
@@ -388,18 +369,18 @@ function dsBarChart(genderType) {
     .attr("font-weight","bold")
     .text("Enrollment details for  " +  genderType+ " students.");
 
-if(genderType == "Female")
+if(genderType == "female")
 {
 	svg.selectAll("rect")
 	.style("fill","#FFB6C1");
 }
-else if(genderType == "Male")
+else if(genderType == "male")
 {
 	svg.selectAll("rect")
 	.style("fill","#89cff0");
 }
 
-else if(genderType == "All")
+else if(genderType == "all")
 {
 	svg.selectAll("rect")
 	.style("fill","#9FDD9F");
