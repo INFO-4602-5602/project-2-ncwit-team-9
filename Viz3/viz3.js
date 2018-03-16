@@ -57,18 +57,19 @@ function dataFilterplot(typeGender, majorSelected, xScale, yScale, svg, data , s
     .attr('stroke', select_color)
     .attr('stroke-width', 2);
 
-  svg.selectAll("circle")
+  svg.selectAll(".circle")
     .data(_data)
     .enter()
     .append("circle")
     .attr("r", 4)
+    .style('fill', select_color)
     .attr("cy", function(d) {
       return yScale(d.y);
     })
     .attr("cx", function(d, i) {
       return xScale(d.x);
     })
-    .attr('fill', select_color)
+
     ;
 
 
