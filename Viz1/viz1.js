@@ -2,9 +2,14 @@ var barChartData = [];
 var fullData = [];
 var select_gender = "All";
 
+
+var sum = 0;
+
+
 var tooltip = d3.select("body").append("div")
-  .attr("class", "tooltip")
+  .attr("class", "tooltip1")
   .style("visibility", "hidden");
+
 var 	formatAsPercentage = d3.format("%");
 var margin = {
     top: 20,
@@ -27,13 +32,23 @@ var margin = {
 
 	function chosenDonutData(group,gender) {
 	  var ds = [];
+    sum = 0;
 
 	  // console.log(barChartData);
 	  for (x in fullData) {
 	    if (fullData[x].category == group && fullData[x].gender == gender && fullData[x].race != "All") {
+
+        sum = sum + fullData[x].measure;
 	      ds.push(fullData[x]);
 	    }
 	  }
+
+    for (x in ds)
+    {
+      ds[x].measure = ds[x].measure/sum;
+      console.log(sum);
+      console.log(ds[x].measure);
+    }
 	  return ds;
 	}
 
@@ -82,8 +97,16 @@ var margin = {
          arcs.append("svg:path")
                 .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
                 .attr("d", arc)     //this creates the actual SVG path using the associated data (pie) with the arc drawing function
- 					.append("svg:title") //mouseover title showing the figures
- 				   .text(function(d) {return d.data.race + ": " + formatAsPercentage(d.data.measure);});
+ 					// .append("svg:title") //mouseover title showing the figures
+ 				  //  .text(function(d) {return d.data.race + ": " + d.data.measure;})
+           .on("mouseover", function(d) {
+             return tooltip.html(d.data.race + " : " + formatAsPercentage((d.data.measure).toFixed(3)) )
+               .style("visibility", "visible")
+               .style("top", (event.pageY - 17) + "px").style("left", (event.pageX + 25) + "px");
+           })
+           .on("mouseout", function() {
+             return tooltip.style("visibility", "hidden");
+           })
 
          d3.selectAll("g.slice").selectAll("path").transition()
  			    .duration(750)
@@ -113,7 +136,7 @@ var margin = {
  		vis.append("svg:text")
  	     	.attr("dy", ".35em")
  	      .attr("text-anchor", "middle")
- 	      .text("Demographic Enrollment")
+ 	      .text("Demographic Enrollment for ")
  	      .attr("class","title")
  	      ;
 
