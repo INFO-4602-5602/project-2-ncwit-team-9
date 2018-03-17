@@ -90,6 +90,14 @@ A significantly higher number of women are enrolled in ES assisted programs.  (T
 
 You can see the video for this visualization [here](https://www.youtube.com/watch?v=6-zR8niosi8&feature=youtu.be) and the tableau workbook [here](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/tree/master/Vis4)
 
+<h3>Above and Beyond</h3>
+Dashboarding: All the visualizations are on the same page. We consider this a dashboard because the website follows a one page architecture where all visualizations can be viewed by scrolling.<br/>
+Added Visualizations: We have added a donut chart in visualization 1 and an additional video of the prototyping done in tableau.<br/>
+Dynamic Queries: visualization 2 has a slider for high school gpa and dropdown for institutions and the visualization 3 has a check box legend for the majors<br/>
+Missing Data: We filtered out the data for the institutions that had dense data and used this filtered data across all visualizations to maintain consistency.<br/>
+Coordinated Views: In visualization 1, we have added interaction between the bar chart and the donut chart, where when you click on the bar for a year, it will show you the demographic of the students enrolled that year.<br/>
+Overview+Detail: As you move through visualization 1 and visualization 2 you will see that they depict data for the gender you have selected on the left pane.  <br/>
+
 <h3>Team Roles</h3>
 <b>Ashwin: </b> Data cleaning, Data conversion, d3 visualization<br/>
 <b>Gena: </b> Data cleaning, Data analysis, tableau visualization<br/>
@@ -97,5 +105,5 @@ You can see the video for this visualization [here](https://www.youtube.com/watc
 <b>Supriya: </b> Data conversion, d3 visualization<br/>
 
 <h3>How to Run</h3>
-You can download the 'submissions' folder and run the index.html file in a web browser of your choice.
+You can download the 'submission' folder and run the index.html file in a web browser of your choice.
 
