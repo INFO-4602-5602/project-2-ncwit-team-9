@@ -1,11 +1,11 @@
-<h1>Project 1: Visualizing NCWIT Data</h1>
+<h1>Project 2: Visualizing NCWIT Data</h1>
 <h2> Ashwin Sankaralingam, Gena Welk, Sreesha Nath, Supriya Naidu </h2>
 
 As expected from real world data, we recieved a lot of data and not all of it was pretty. We decided to invest in cleaning the data and choosing the datapoints that we found to be coherent enough to answer our questions. This helped us create a story of our own. Please read ahead to know more about our visualizations and the efforts that went behind them.
 
 <h3>The Dataset</h3>
-The dataset was provided by NCWIT and consists of various demographic data about both potential and enrolled students, and even graduated students.  This data was detailed by institution and by major.
-<br/>
+The dataset was provided by NCWIT and consists of various demographic data about both potential and enrolled students, including graduated students.  This data was detailed by institution and by major.
+<br/><br/>
 We filtered the data to emphasize our goals of our chosen storyline (outlined below).  This means that we looked for records of 14 institutions which had the highest quantity and consistency of data for freshman, sophomore, junior, and senior GPA’s as well high school GPA’s.  Each of these 14 institutions had a minimum of 10 records each which showed the desired information. (We did not include 5th Yr Senior data as there was not sufficient information by which to draw preliminary conclusions.)
 
 <h3>Storyline</h3>
@@ -65,6 +65,8 @@ _Sources:_
 For viz2 our visualization depicts the variation in CGPAs for the students from high school to their 4th year of college. In this visualization we have omitted the CGPA data associated with the 5th year students because the data was extremely sparse(as explained above) and would not contribute to our study. The slider on the left side helps you choose a high school GPA. Based on the selection, we are plotting the average CGPA observed for that high school CGPA, and a standard deviation for each academic year. Our aim is to project the approximate CGPA a student can expect to get with a particular starting high school CGPA. The data we have taken spans across all the calendar years. We do have an additional filter, besides gender, to choose 1 from the 14 institutions we've filtered on. <br/>
 As you move the slider to change the high school GPA, you will see that there are some values for which there is no data plotted, because there is no data associated with it. In some cases, no error bar is visible because there are not enough values to calculate a good standard deviation. Hence, you would just see the average as dots on the plot.<br/>
 One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
+_Inspiration:_ [reference](https://bl.ocks.org/NGuernse/8dc8b9e96de6bedcb6ad2c5467f5ef9a) <br/>
+_Sources:_ [reference](http://seiyria.com/bootstrap-slider/)
 
 <h3>Visualization 3</h3>
 For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.
@@ -81,5 +83,14 @@ The .mov file shows the interactivity as the mouse moved across the screen.  Too
 A significantly higher number of women are enrolled in ES assisted programs.  (The anomalies where this is not the case is for 3 of the top 25 majors Industrial Distribution, Management Information Systems, Computer Software and Media Applications)<br/>
 
 
-You can see the video for this visualization [here](https://www.youtube.com/watch?v=6-zR8niosi8&feature=youtu.be) and the tableau workbook [here]()
+You can see the video for this visualization [here](https://www.youtube.com/watch?v=6-zR8niosi8&feature=youtu.be) and the tableau workbook [here](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/tree/master/Vis4)
+
+<h3>Team Roles</h3>
+<b>Ashwin: </b> Data cleaning, Data conversion, d3 visualization
+<b>Gena: </b> Data cleaning, Data analysis, tableau visualization
+<b>Sreesha: </b> Data conversion, reporting, styling
+<b>Supriya: </b> Data conversion, d3 visualization
+
+<h3>How to Run</h3>
+You can download the 'submissions' folder and run the index.html file in a web browser of your choice.
 
