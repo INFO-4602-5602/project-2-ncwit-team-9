@@ -67,10 +67,19 @@ As you move the slider to change the high school GPA, you will see that there ar
 One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
 
 <h3>Visualization 3</h3>
-_Inspiration:_  [reference4](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/><br/>
+For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.
+
+_Inspiration:_ [reference4](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/><br/>
 _Sources:_ [reference5](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
 
 <h3>Visualization 4</h3>
 
-You can see the prototype for this visualization [here]()
+This visualization was created in Tableau and published to our project as a .mov file, as well as a .twb file.  In the Tableau graph, the x-axis shows academic years from 2003-2004 to 2016-2017, while the y-axis shows total female students.  NCWIT ES is differentiated from AA by color; Pink bars show students enrolled in programs that are NCWIT Extension Services members and orange bars show the number of female students in programs that are NCWIT Academic Alliance members.<br/>
+
+The .mov file shows the interactivity as the mouse moved across the screen.  Tooltips appear as the mouse hovers over the bars, showing the number of females, the year, and the NCWIT membership.  Additionally, the information may be filtered by major as shown on the right hand side of the screen.  The viewer may choose to select one, some, or all of the majors and the totals bar will reflect that.<br/>
+
+A significantly higher number of women are enrolled in ES assisted programs.  (The anomalies where this is not the case is for 3 of the top 25 majors Industrial Distribution, Management Information Systems, Computer Software and Media Applications)<br/>
+
+
+You can see the video for this visualization [here](https://www.youtube.com/watch?v=6-zR8niosi8&feature=youtu.be) and the tableau workbook [here]()
 
