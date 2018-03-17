@@ -237,11 +237,11 @@ function datasetBarChosen(group, gender) {
 var margin = {
     top: 30,
     right: 5,
-    bottom: 90,
+    bottom: 20,
     left: 50
   },
-  width = 700 - margin.left - margin.right,
-  height = 850 - margin.top - margin.bottom,
+  width1 = 700 - margin.left - margin.right,
+  height1 =550 - margin.top - margin.bottom,
   colorBar = d3.schemeCategory20b,
   barPadding = 1;
 
@@ -249,20 +249,20 @@ function dsBarChart(genderType) {
   var firstbarChartData = datasetBarChosen(group, genderType);
   var xScale = d3.scaleLinear()
     .domain([0, firstbarChartData.length])
-    .range([0, width]);
+    .range([0, width1]);
   var yScale = d3.scaleLinear()
     .domain([0, d3.max(firstbarChartData, function(d) {
       return d.measure;
     })])
-    .range([height, 0]);
+    .range([height1, 0]);
 
   //Create SVG element
 
   var svg = d3.select("#bar")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
-  var bar_width = width / firstbarChartData.length - barPadding;
+    .attr("width", width1 + margin.left + margin.right)
+    .attr("height", 660 + margin.top + margin.bottom);
+  var bar_width = width1 / firstbarChartData.length - barPadding;
   var plot = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -274,12 +274,12 @@ function dsBarChart(genderType) {
       // console.log(i);
       return xScale(i);
     })
-    .attr("width", width / firstbarChartData.length - barPadding)
+    .attr("width", width1 / firstbarChartData.length - barPadding)
     .attr("y", function(d) {
       return yScale(d.measure);
     })
     .attr("height", function(d) {
-      return height - yScale(d.measure);
+      return height1 - yScale(d.measure);
     })
     .on("click", update);
 
@@ -294,7 +294,7 @@ function dsBarChart(genderType) {
     })
     .attr("text-anchor", "middle")
     .attr("x", function(d, i) {
-      return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
+      return (i * (width1 / firstbarChartData.length)) + ((width1 / firstbarChartData.length - barPadding) / 2);
     })
     .attr("y", function(d) {
       return yScale(d.measure) + 14;
@@ -343,7 +343,7 @@ function dsBarChart(genderType) {
     .attr("class", "x axis")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("transform", "translate(" + margin.left + "," + (margin.top + height) + ")")
+    .attr("transform", "translate(" + margin.left + "," + (margin.top + height1) + ")")
     .selectAll("text.xAxis")
     .data(firstbarChartData)
     .enter()
@@ -353,7 +353,7 @@ function dsBarChart(genderType) {
     })
     .style("text-anchor", "end")
     .attr("y", function(d, i) {
-      return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
+      return (i * (width1 / firstbarChartData.length)) + ((width1 / firstbarChartData.length - barPadding) / 2);
     })
     .attr("x", 10)
     .attr("transform", "rotate(-90)")
