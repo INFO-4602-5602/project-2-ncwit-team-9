@@ -2,13 +2,6 @@ circle {
   fill: #ff6600;
 }
 
-
-#viz2
-{
-  position: absolute;
-  margin-top : 130px;
-
-}
 .error-line {
   stroke: #b30059;
   stroke-dasharray: 2, 2;
@@ -61,13 +54,13 @@ circle {
 }
 
 #left {
-    width: 10%;
+    width: 20%;
     height: 100%;
     position: fixed;
     background: grey;
 }
 #right {
-    width: 90%;
+    width: 80%;
     position: absolute;
     right: 0;
 }

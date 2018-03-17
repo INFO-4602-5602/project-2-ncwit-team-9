@@ -20,14 +20,20 @@ var margin = {
   radius = Math.min(width, height) / 2;;
 
 //gender selector
-d3.selectAll("input[name='stack']").on("change", function() {
+d3.selectAll("input[name='stack1']").on("change", function() {
+  console.log("change");
   select_gender = this.value;
   $("#bar").empty();
   dsBarChart(select_gender);
   $("#donut").empty();
   dsDonutChart(school_year, select_gender);
+  $("input[name='stack1']").trigger("change");
 
 });
+// d3.selectAll("input[name='stack']").on("change", function() {
+//   select_gender = this.value;
+//   populateBin(select_inst, select_gender, select_hsgpa);
+// });
 
 function chosenDonutData(group, gender) {
   var ds = [];
@@ -80,7 +86,7 @@ function dsDonutChart(school_year, genderType) {
   .append("svg") //create the SVG element inside the <body>
   //associate our data with the document
     .attr("width", width) //set the width and height of our visualization (these will be attributes of the <svg> tag
-    .attr("height", height)
+    .attr("height", 250)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

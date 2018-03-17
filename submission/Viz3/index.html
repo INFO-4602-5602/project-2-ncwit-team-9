@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Viz 3</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+<!--  <script src="https://d3js.org/d3.v4.min.js"></script>-->
+  <script src="http://d3js.org/d3.v4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css">
+  <link rel="stylesheet" type="text/css" href="viz3.css">
+
+</head>
+<body>
+    <div id="left">
+    <form id="form">
+          <label class="container">All
+            <input type="radio" name="stack" value="all" checked="checked">
+            <span class="checkmark all"></span>
+          </label>
+          <label class="container">Female
+            <input type="radio" name="stack" value="female">
+            <span class="checkmark female"></span>
+          </label>
+          <label class="container">Male
+            <input type="radio" name="stack" value="male" >
+            <span class="checkmark male"></span>
+          </label>
+        </form>
+    </div>
+    <div id="right">
+        <div id="dropouts">
+        </div>
+    </div>
+	<script src="viz3.js"></script>
+</body>
+
+</html>
