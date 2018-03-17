@@ -56,8 +56,12 @@ function dsDonutChart(school_year, genderType) {
     // for animation
     innerRadiusFinal = outerRadius * .5,
     innerRadiusFinal3 = outerRadius * .45,
+
     // color = d3.scaleOrdinal().range(["#48A36D",  "#56AE7C",  "#64B98C", "#72C39B", "#80CEAA", "#80CCB3", "#7FC9BD", "#7FC7C6", "#7EC4CF", "#7FBBCF", "#7FB1CF", "#80A8CE", "#809ECE", "#8897CE", "#8F90CD", "#9788CD", "#9E81CC", "#AA81C5", "#B681BE", "#C280B7", "#CE80B0", "#D3779F", "#D76D8F", "#DC647E", "#E05A6D", "#E16167", "#E26962", "#E2705C", "#E37756", "#E38457", "#E39158", "#E29D58", "#E2AA59", "#E0B15B", "#DFB95C", "#DDC05E", "#DBC75F", "#E3CF6D", "#EAD67C", "#F2DE8A"]);
     color = d3.scaleOrdinal(d3.schemePastel1); //builtin range of colors
+
+    // color = d3.scaleOrdinal().range(["#07E712","#FF5733","#E72E07","#581845","#24EECD","#0FF09A","#F00FF0","#9D919D","#5141F0","#41A0F0", "#13EF10","#EFB210","#EF8A10","#EF10AB","#0C856A","#34660A","#0A4666","#E2ABB5","#E70964","#967FA9","#9BA97F"]);
+
 
   var donutChartData = chosenDonutData(school_year, genderType);
 
