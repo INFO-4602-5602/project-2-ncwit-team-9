@@ -1,3 +1,15 @@
 http://bl.ocks.org/jonahwilliams/2f16643b999ada7b1909
 
 viz 3 line chart: http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4
+
+https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9
+
+https://bl.ocks.org/vickygisel/c3f4eb2b16b86dd0f641263383f05a13
+
+http://bl.ocks.org/diethardsteiner/3287802
+
+http://bl.ocks.org/mstanaland/6106487
+
+http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4
+
+https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id
