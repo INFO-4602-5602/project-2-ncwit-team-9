@@ -6,7 +6,7 @@ As expected from real world data, we recieved a lot of data and not all of it wa
 <h3>The Dataset</h3>
 The dataset was provided by NCWIT and consists of various demographic data about both potential and enrolled students, including graduated students.  This data was detailed by institution and by major.
 <br/><br/>
-We filtered the data to emphasize our goals of our chosen storyline (outlined below).  This means that we looked for records of 14 institutions which had the highest quantity and consistency of data for freshman, sophomore, junior, and senior GPA’s as well high school GPA’s.  Each of these 14 institutions had a minimum of 10 records each which showed the desired information. (We did not include 5th Yr Senior data as there was not sufficient information by which to draw preliminary conclusions.)
+We filtered the data to emphasize the story of how a student can see the history over the years of enrollment into the feild of information technology and computer science.  We had a wide array of data that were very sparse and we decided to handle the missing data. We selected 14 institutions which had consistent data for freshman, sophomore, junior, and senior GPA’s as well high school GPA’s.  Each of these 14 institutions had a minimum of 10 records each which showed the desired information. (We did not include 5th Yr Senior data as there was not sufficient information by which to draw preliminary conclusions.)
 
 <h3>Storyline</h3>
 Based off of the data we could condense, we decided to start our story by showing the enrollments of students of each and both genders per year and the distibution across races. We then moved on to project the trajectory of students grades as they transition from high school to college and through the college years. Eventually we decided to potray the nature of student dropouts from different majors and across college years. Finally, for an overview of the Total Female students that are attending programs where they utilize NCWIT Extension Services (ES) vs. simply being NCWIT Academic Alliance (AA) members.
@@ -62,17 +62,22 @@ _Sources:_
 [reference3](http://bl.ocks.org/mstanaland/6106487)<br/>
 
 <h3>Visualization 2</h3>
+
 For viz2 our visualization depicts the variation in CGPAs for the students from high school to their 4th year of college. In this visualization we have omitted the CGPA data associated with the 5th year students because the data was extremely sparse(as explained above) and would not contribute to our study. The slider on the left side helps you choose a high school GPA. Based on the selection, we are plotting the average CGPA observed for that high school CGPA, and a standard deviation for each academic year. Our aim is to project the approximate CGPA a student can expect to get with a particular starting high school CGPA. The data we have taken spans across all the calendar years. We do have an additional filter, besides gender, to choose 1 from the 14 institutions we've filtered on. <br/>
 As you move the slider to change the high school GPA, you will see that there are some values for which there is no data plotted, because there is no data associated with it. In some cases, no error bar is visible because there are not enough values to calculate a good standard deviation. Hence, you would just see the average as dots on the plot.<br/>
-One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
-_Inspiration:_ [reference](https://bl.ocks.org/NGuernse/8dc8b9e96de6bedcb6ad2c5467f5ef9a) <br/>
-_Sources:_ [reference](http://seiyria.com/bootstrap-slider/)
+One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.</br>
+_Inspiration:_
+[reference](https://bl.ocks.org/NGuernse/8dc8b9e96de6bedcb6ad2c5467f5ef9a) <br/>
+_Sources:_ 
+[reference](http://seiyria.com/bootstrap-slider/)
 
 <h3>Visualization 3</h3>
-For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.
+For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.<br/>
 
-_Inspiration:_ [reference](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/>
-_Sources:_ [reference](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
+_Inspiration:_ 
+[reference](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/>
+_Sources:_ 
+[reference](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
 
 <h3>Visualization 4</h3>
 
@@ -85,12 +90,20 @@ A significantly higher number of women are enrolled in ES assisted programs.  (T
 
 You can see the video for this visualization [here](https://www.youtube.com/watch?v=6-zR8niosi8&feature=youtu.be) and the tableau workbook [here](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/tree/master/Vis4)
 
+<h3>Above and Beyond</h3>
+<b>Dashboarding:</b> All the visualizations are on the same page. We consider this a dashboard because the website follows a one page architecture where all visualizations can be viewed by scrolling.<br/>
+<b>Added Visualizations:</b> We have added a donut chart in visualization 1 and an additional video of the prototyping done in tableau.<br/>
+<b>Dynamic Queries:</b> visualization 2 has a slider for high school gpa and dropdown for institutions and the visualization 3 has a check box legend for the majors<br/>
+<b>Missing Data:</b> We filtered out the data for the institutions that had dense data and used this filtered data across all visualizations to maintain consistency.<br/>
+<b>Coordinated Views:</b> In visualization 1, we have added interaction between the bar chart and the donut chart, where when you click on the bar for a year, it will show you the demographic of the students enrolled that year.<br/>
+<b>Overview+Detail:</b> As you move through visualization 1 and visualization 2 you will see that they depict data for the gender you have selected on the left pane.  <br/>
+
 <h3>Team Roles</h3>
-<b>Ashwin: </b> Data cleaning, Data conversion, d3 visualization
-<b>Gena: </b> Data cleaning, Data analysis, tableau visualization
-<b>Sreesha: </b> Data conversion, reporting, styling
-<b>Supriya: </b> Data conversion, d3 visualization
+<b>Ashwin: </b> Data cleaning, Data conversion, d3 visualization<br/>
+<b>Gena: </b> Data cleaning, Data analysis, tableau visualization<br/>
+<b>Sreesha: </b> Data conversion, reporting, styling<br/>
+<b>Supriya: </b> Data conversion, d3 visualization<br/>
 
 <h3>How to Run</h3>
-You can download the 'submissions' folder and run the index.html file in a web browser of your choice.
+You can download the 'submission' folder and run the index.html file in a web browser of your choice.
 
