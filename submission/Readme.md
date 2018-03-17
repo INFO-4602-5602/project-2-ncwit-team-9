@@ -37,7 +37,7 @@ Information Sciences<br/>
 Information Technology<br/>
 Information Technology (this one had a space at the end)<br/><br/>
 
-Another cleaning item we did was alter the following descriptions for column “NCWIT Alliance” so that we ended up with only 2 options for this field (which left 4 records of 2,905 records as blank):<br/>
+Another cleaning item we did was alter the following descriptions for column “NCWIT Alliance” so that we ended up with only 2 options for this field (which left 4 records of 2,905 records as blank):<br/><br/>
 Academic Alliance ---->  Academic Alliance<br/>
 Academic Alliance, Academic Alliance ---->  Academic Alliance<br/>
 Extension Services, Academic Alliance ---->  Extension Services<br/>
@@ -52,11 +52,11 @@ _Prototypes:_
 For all the visualizations, we decided to have a gender separated representation as we had well distributed values for all the datapoints. We have also provided an option to view the gender neutral data for all our visualization. One salient feature that we would like to emphasize on is that on choosing the gender filter, our d3 visualizations(viz1, viz2, viz3) represent information for the selected gender.
 
 <h3>Visualization 1</h3>
-For viz1 we decided on potraying the enrollments into all majors in each calendar year. The bar chart in this viz is our time sensitive viz. For the extra credit points, we added a donut chart to this visualization. This pie chart is updates as per the bar you click on. On hovering over the parts of the donut, it provides a tool tip of the percentage of students that were enrolled in that year for that race. <br/>
+For viz1 we decided on potraying the enrollments into all majors in each calendar year. The bar chart in this viz is our time sensitive viz. For the extra credit points, we added a donut chart to this visualization. This donut chart is updates as per the bar you click on. On hovering over the parts of the donut, it provides a tool tip of the percentage of students that were enrolled in that year for that race. <br/>
 Our observation from this combined visualization was that there is a good number of Hispanic students that have enrolled. Another perception could also be that the data we have is skewed in having more information about Hispanic students. <br/>
 
-_Inspiration:_  [reference](http://bl.ocks.org/diethardsteiner/3287802)<br/><b2/>
-_Sources:_  <br/>
+_Inspiration:_  [reference](http://bl.ocks.org/diethardsteiner/3287802)<br/><br/>
+_Sources:_ 
 [reference1](https://bl.ocks.org/vickygisel/c3f4eb2b16b86dd0f641263383f05a13),
 [reference2](https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9),
 [reference3](http://bl.ocks.org/mstanaland/6106487)<br/>
@@ -67,5 +67,10 @@ As you move the slider to change the high school GPA, you will see that there ar
 One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
 
 <h3>Visualization 3</h3>
+_Inspiration:_  [reference](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4)<br/><br/>
+_Sources:_ [reference](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
 
 <h3>Visualization 4</h3>
+
+You can see the prototype for this visualization [here]()
+
