@@ -8,7 +8,7 @@
 
 .donutChart {
 	position:absolute;
-	top:30px;
+	top:90px;
 	left:40px;
 	width:400px;
 	height: 400px;
@@ -16,7 +16,7 @@
 
 .legendSpace {
 	position:absolute;
-	top:440px;
+	top:470px;
 	left:40px;
 	width:400px;
 	height: 250px;
@@ -28,7 +28,7 @@
 
 .barChart {
 	position:absolute;
-	top:10px;
+	top:90px;
 	left:410px;
 	height: 250px;
 }

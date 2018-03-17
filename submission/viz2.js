@@ -90,7 +90,7 @@ var margin = {
     left: 30
   },
   width = 500 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 750 - margin.top - margin.bottom;
 
 
 //slider reversing the value

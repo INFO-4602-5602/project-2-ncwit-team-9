@@ -10,7 +10,7 @@ var tooltip = d3.select("body").append("div")
 
 var formatAsPercentage = d3.format(".2%");
 var margin = {
-    top: 20,
+    top: 50,
     right: 20,
     bottom: 0,
     left: 350
