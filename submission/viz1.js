@@ -21,10 +21,6 @@ var margin = {
 
 //gender selector
 
-
-
-
-
 function psuedofunction1(value)
 {
   console.log("change");
@@ -33,14 +29,8 @@ function psuedofunction1(value)
   dsBarChart(select_gender);
   $("#donut").empty();
   dsDonutChart(school_year, select_gender);
-
 }
 
-
-// d3.selectAll("input[name='stack']").on("change", function() {
-//   select_gender = this.value;
-//   populateBin(select_inst, select_gender, select_hsgpa);
-// });
 
 function chosenDonutData(group, gender) {
   var ds = [];
@@ -71,28 +61,21 @@ function dsDonutChart(school_year, genderType) {
     innerRadiusFinal3 = outerRadius * .45,
     // color = d3.scaleOrdinal().range(["#07E712","#FF5733","#E72E07","#581845","#24EECD","#0FF09A","#F00FF0","#9D919D","#5141F0","#41A0F0", "#13EF10","#EFB210","#EF8A10","#EF10AB","#0C856A","#34660A","#0A4666","#E2ABB5","#E70964","#967FA9","#9BA97F"]);
     color = d3.scaleOrdinal(d3.schemePastel1); //builtin range of colors
-  // color = d3.scaleSequential(d3.interpolateInferno).domain([0, width]);
 
   var donutChartData = chosenDonutData(school_year, genderType);
 
-
-
-
-
   var vis = d3.select("#donut")
-    .append("svg:svg") //create the SVG element inside the <body>
-    .data(donutChartData) //associate our data with the document
-    .attr("width", width) //set the width and height of our visualization (these will be attributes of the <svg> tag
+    .append("svg:svg")
+    .data(donutChartData)
+    .attr("width", width)
     .attr("height", height)
-    .append("svg:g") //make a group to hold our pie chart
-    .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")") //move the center of the pie chart from 0, 0 to radius, radius
-  ;
+    .append("svg:g")
+    .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
 
  $("#legend").empty();
   var legend_svg = d3.select("#legend")
-  .append("svg") //create the SVG element inside the <body>
-  //associate our data with the document
-    .attr("width", width) //set the width and height of our visualization (these will be attributes of the <svg> tag
+  .append("svg")
+    .attr("width", width)
     .attr("height", 250)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -115,7 +98,7 @@ function dsDonutChart(school_year, genderType) {
     .attr("fill", function(d,i) {
       select_color = color(d.race);
       console.log(select_color);
-      return color(i); // If array key "visible" = true then color rect, if not then make it grey
+      return color(i);
     })
     .attr("class", "legend-box");
 
@@ -123,14 +106,14 @@ function dsDonutChart(school_year, genderType) {
       .attr("x", 35)
       .attr("y", function(d, i) {
         return (legendSpace) + i * (legendSpace) + 6;
-      }) // (return (11.25/2 =) 5.625) + i * (5.625)
+      })
       .text(function(d,i) {
         console.log(d.race);
         return d.race;
       });
 
 
-  var arc = d3.arc() //this will create <path> elements for us using arc data
+  var arc = d3.arc()
     .outerRadius(outerRadius).innerRadius(innerRadius);
 
   // for animation
@@ -140,25 +123,20 @@ function dsDonutChart(school_year, genderType) {
   var pie = d3.pie() //this will create arc data for us given a list of values
     .value(function(d) {
       return d.measure;
-    }); //we must tell it out to access the value of each element in our data array
-
-  var arcs = vis.selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
+    });
+  var arcs = vis.selectAll("g.slice")
     .data(pie(donutChartData)) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
-    .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-    .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-    .attr("class", "slice") //allow us to style things in the slices (like text)
+    .enter()
+    .append("svg:g")
+    .attr("class", "slice")
     .on("mouseover", mouseover)
-    .on("mouseout", mouseout)
-  // .on("click", up)
-  ;
+    .on("mouseout", mouseout);
 
   arcs.append("svg:path")
     .attr("fill", function(d, i) {
       return color(i);
-    }) //set the color for each slice to be chosen from the color function defined above
-    .attr("d", arc) //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-    // .append("svg:title") //mouseover title showing the figures
-    //  .text(function(d) {return d.data.race + ": " + d.data.measure;})
+    })
+    .attr("d", arc)
     .on("mouseover", function(d) {
       return tooltip.html(d.data.race + " : " + formatAsPercentage((d.data.measure).toFixed(3)))
         .style("visibility", "visible")
@@ -222,9 +200,6 @@ function dsDonutChart(school_year, genderType) {
       .duration(400)
       .attr("d", arcFinal);
   }
-
-
-
 }
 
 
@@ -259,7 +234,6 @@ function datasetBarChosen(group, gender) {
   return ds;
 }
 
-
 var margin = {
     top: 30,
     right: 5,
@@ -271,14 +245,8 @@ var margin = {
   colorBar = d3.schemeCategory20b,
   barPadding = 1;
 
-
-
 function dsBarChart(genderType) {
-
-
   var firstbarChartData = datasetBarChosen(group, genderType);
-
-
   var xScale = d3.scaleLinear()
     .domain([0, firstbarChartData.length])
     .range([0, width]);
@@ -325,7 +293,6 @@ function dsBarChart(genderType) {
       return d.measure;
     })
     .attr("text-anchor", "middle")
-    // Set x position to the left edge of each bar plus half the bar width
     .attr("x", function(d, i) {
       return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
     })
@@ -381,12 +348,10 @@ function dsBarChart(genderType) {
     .data(firstbarChartData)
     .enter()
     .append("text")
-    // .attr("")
     .text(function(d) {
       return d.category;
     })
     .style("text-anchor", "end")
-    // Set x position to the left edge of each bar plus half the bar width
     .attr("y", function(d, i) {
       return (i * (width / firstbarChartData.length)) + ((width / firstbarChartData.length - barPadding) / 2);
     })
@@ -394,18 +359,6 @@ function dsBarChart(genderType) {
     .attr("transform", "rotate(-90)")
     .attr("font-weight", "bold")
     .call(wrap, 3);
-
-  //
-  // svg.append("g")
-  //     .attr("class", "x axis")
-  //     .attr("transform", "translate(0," + height + ")")
-  //     .call(xAxis)
-  //   .selectAll("text")
-  //     .attr("y", 0)
-  //     .attr("x", 9)
-  //     .attr("dy", ".35em")
-  //     .attr("transform", "rotate(90)")
-  //     .style("text-anchor", "start");
 
   // Title
   svg.append("text")
