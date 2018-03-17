@@ -1,0 +1,41 @@
+ bar {
+  fill: #9FDD9F;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.donutChart {
+	position:absolute;
+	top:30px;
+	left:40px;
+	width:400px;
+	height: 400px;
+}
+
+.legendSpace {
+	position:absolute;
+	top:440px;
+	left:40px;
+	width:400px;
+	height: 350px;
+}
+
+.legend rect {
+  fill:white;
+  stroke:black;}
+
+.barChart {
+	position:absolute;
+	top:10px;
+	left:410px;
+	height: 250px;
+}
+
+.slice {
+   font-size: 12pt;
+   font-family: Verdana;
+   fill: white; //svg specific - instead of color
+   font-weight: bold;
+ }
