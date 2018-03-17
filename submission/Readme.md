@@ -35,7 +35,7 @@ Information Science (this one had a space at the end)<br/>
 Information Sciences<br/>
 -----------------------------------------<br/>
 Information Technology<br/>
-Information Technology (this one had a space at the end)<br/>
+Information Technology (this one had a space at the end)<br/><br/>
 
 Another cleaning item we did was alter the following descriptions for column “NCWIT Alliance” so that we ended up with only 2 options for this field (which left 4 records of 2,905 records as blank):<br/>
 Academic Alliance ---->  Academic Alliance<br/>
@@ -44,8 +44,8 @@ Extension Services, Academic Alliance ---->  Extension Services<br/>
  
 For our prototyping process we experimented with the designs via sketching prior to implementation. You can find them here:
 
-_Sources:_ 
-[viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3811.jpg)</br>
+_Prototypes:_ 
+[viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3811.jpg),
 [viz2](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3812.jpg)
 
 <h2>Visualizations</h2>
@@ -55,10 +55,10 @@ For all the visualizations, we decided to have a gender separated representation
 For viz1 we decided on potraying the enrollments into all majors in each calendar year. The bar chart in this viz is our time sensitive viz. For the extra credit points, we added a donut chart to this visualization. This pie chart is updates as per the bar you click on. On hovering over the parts of the donut, it provides a tool tip of the percentage of students that were enrolled in that year for that race. <br/>
 Our observation from this combined visualization was that there is a good number of Hispanic students that have enrolled. Another perception could also be that the data we have is skewed in having more information about Hispanic students. <br/>
 
-_Inspiration:_  [reference](http://bl.ocks.org/diethardsteiner/3287802)<br/>
+_Inspiration:_  [reference](http://bl.ocks.org/diethardsteiner/3287802)<br/><b2/>
 _Sources:_  <br/>
-[reference1](https://bl.ocks.org/vickygisel/c3f4eb2b16b86dd0f641263383f05a13)<br/>
-[reference2](https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9)<br/>
+[reference1](https://bl.ocks.org/vickygisel/c3f4eb2b16b86dd0f641263383f05a13),
+[reference2](https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9),
 [reference3](http://bl.ocks.org/mstanaland/6106487)<br/>
 
 <h3>Visualization 2</h3>
