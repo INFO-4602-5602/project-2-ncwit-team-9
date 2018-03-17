@@ -1,18 +1,12 @@
-var margin = {
+var margin3 = {
     top: 20,
-    right: 200,
+    right: 400,
     bottom: 100,
     left: 70
   },
-  margin2 = {
-    top: 430,
-    right: 10,
-    bottom: 20,
-    left: 70
-  },
-  width = 1060 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom,
-  height2 = 500 - margin2.top - margin2.bottom;
+  width3 = 1200 - margin3.left - margin3.right,
+  height = 500 - margin3.top - margin3.bottom
+
 
 //gender selector
 function psuedofunction3(value){
@@ -60,7 +54,7 @@ function dataFilterplot(typeGender, majorSelected, xScale, yScale, svg, data , s
     .attr("d", line)
     .attr('fill', 'none')
     .attr('stroke', select_color)
-    .attr('stroke-width', 2)
+    .attr('stroke-width3', 2)
     .attr("id","path"+majorSelected);
 
   svg.selectAll(".circle")
@@ -98,14 +92,14 @@ function plotGraph(typeGender) {
   // var maxY; // Defined later to update yAxis
 
   var svg = d3.select("#dropouts").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom) //height + margin.top + margin.bottom
+    .attr("width", width3 + margin3.left + margin3.right)
+    .attr("height", height + margin3.top + margin3.bottom) //height + margin3.top + margin3.bottom
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin3.left + "," + margin3.top + ")");
 
   // Create invisible rect for mouse tracking
   svg.append("rect")
-    .attr("width", width)
+    .attr("width", width3)
     .attr("height", height)
     .attr("x", 0)
     .attr("y", 0)
@@ -123,7 +117,7 @@ function plotGraph(typeGender) {
     .append("clipPath")
     .attr("id", "clip")
     .append("rect")
-    .attr("width", width)
+    .attr("width", width3)
     .attr("height", height);
 
   //end slider part-----------------------------------------------------------------------------------
@@ -137,7 +131,7 @@ function plotGraph(typeGender) {
     var tickLabels = ["", "Freshman", "Sophomore", "Junior", "Senior"];
 
 
-    var xScale = d3.scaleLinear().range([0, width]).domain([0, 4.5, 8]);
+    var xScale = d3.scaleLinear().range([0, width3]).domain([0, 4.5, 8]);
 
     var yScale = d3.scaleLinear().range([height, 0]);
 
@@ -159,7 +153,7 @@ function plotGraph(typeGender) {
      {name: "Computer Information Systems",visible: false},
      {name: "Computer Science BS",visible: false},
      {name: "Computer Science BA",visible: false},
-     {name: "CS and or Eng Multiple Majors data submitted in aggregation",visible: false},
+     {name: "CS and or Multiple Engg Majors",visible: false},
      {name: "Computer Software and Media Applications",visible: false},
      {name: "Applied Engineering Sciences",visible: false},
      {name: "Aerospace Engineering",visible: false},
@@ -240,7 +234,7 @@ function plotGraph(typeGender) {
     //   .attr("stroke", "steelblue")
     //   .attr("stroke-linejoin", "round")
     //   .attr("stroke-linecap", "round")
-    //   .attr("stroke-width", 1.5)
+    //   .attr("stroke-width3", 1.5)
     //   .attr("d", line);
 
     //      issue.append("path")
@@ -263,9 +257,9 @@ function plotGraph(typeGender) {
     issue.append("rect")
       .attr("width", 10)
       .attr("height", 10)
-      .attr("x", width + (margin.right / 3) - 15)
+      .attr("x", width3 + (margin3.right / 3) - 115)
       .attr("y", function(d, i) {
-        return (legendSpace) + i * (legendSpace) - 8;
+        return (legendSpace) + i * (legendSpace) - 15;
       }) // spacing
       .attr("fill", function(d) {
         select_color = color(d.name);
@@ -312,33 +306,11 @@ function plotGraph(typeGender) {
           });
       })
 
-    //          .on("mouseover", function(d){
-    //
-    //            d3.select(this)
-    //              .transition()
-    //              .attr("fill", function(d) { return color(d.name); });
-    //
-    //            d3.select("#line-" + d.name.replace(" ", "").replace("/", ""))
-    //              .transition()
-    //              .style("stroke-width", 2.5);
-    //          })
-    //
-    //          .on("mouseout", function(d){
-    //
-    //            d3.select(this)
-    //              .transition()
-    //              .attr("fill", function(d) {
-    //              return d.visible ? color(d.name) : "#F1F1F2";});
-    //
-    //            d3.select("#line-" + d.name.replace(" ", "").replace("/", ""))
-    //              .transition()
-    //              .style("stroke-width", 1.5);
-    //          })
 
     issue.append("text")
-      .attr("x", width + (margin.right / 3))
+      .attr("x", width3 + (margin3.right / 3) - 100)
       .attr("y", function(d, i) {
-        return (legendSpace) + i * (legendSpace);
+        return (legendSpace) + i * (legendSpace) - 6;
       }) // (return (11.25/2 =) 5.625) + i * (5.625)
       .text(function(d) {
         return d.name;
@@ -360,7 +332,7 @@ function plotGraph(typeGender) {
       .append('text')
       .attr("class", "hover-text")
       .attr("y", height - (height - 40)) // hover date text position
-      .attr("x", width - 150) // hover date text position
+      .attr("x", width3 - 150) // hover date text position
       .style("fill", "#E6E7E8");
 
     var columnNames = d3.keys(data[0]) //grab the key values from your first data row
@@ -374,7 +346,7 @@ function plotGraph(typeGender) {
 
     focus.append("text") // http://stackoverflow.com/questions/22064083/d3-js-multi-series-chart-with-y-value-tracking
       .attr("class", "tooltip")
-      .attr("x", width + 20) // position tooltips
+      .attr("x", width3 + 20) // position tooltips
       .attr("y", function(d, i) {
         return (legendSpace) + i * (legendSpace);
       }); // (return (11.25/2 =) 5.625) + i * (5.625) // position tooltips
