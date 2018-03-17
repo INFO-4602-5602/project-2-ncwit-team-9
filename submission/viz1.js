@@ -1,7 +1,7 @@
 var barChartData = [];
 var fullData = [];
 var select_gender = "all";
-var school_year = "2003-2004";
+var school_year = "2014-2015";
 var sum = 0;
 
 var tooltip = d3.select("body").append("div")
