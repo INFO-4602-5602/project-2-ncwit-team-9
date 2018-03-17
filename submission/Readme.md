@@ -43,10 +43,20 @@ Academic Alliance, Academic Alliance ---->  Academic Alliance<br/>
 Extension Services, Academic Alliance ---->  Extension Services<br/>
  
 For our prototyping process we experimented with the designs via sketching prior to implementation. You can find them here:
-_Source:_ [viz1](project-2-ncwit-team-9/Prototyping/IMG_3811.jpg)
-_Source:_ [viz1](project-2-ncwit-team-9/Prototyping/IMG_3812.jpg)
 
-<h3></h3>
+_Source:_ [viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3811.jpg)</br>
+_Source:_ [viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3812.jpg)
+
+<h2>Visualizations</h2>
+For all the visualizations, we decided to have a gender separated representation as we had well distributed values for all the datapoints. We have also provided an option to view the gender neutral data for all our visualization. One salient feature that we would like to emphasize on is that on choosing the gender filter, our d3 visualizations(viz1, viz2, viz3) represent information for the selected gender.
+
+<h3>Visualization 1</h3>
+For viz1 we decided on potraying the enrollments into all majors in each calendar year. The bar chart in this viz is our time sensitive viz. For the extra credit points, we added a pie chart to this visualization. This pie chart is updates as per the bar you click on. On hovering over the parts of the pie, it provides a tool tip of the percentage of students that were enrolled in that year for that race. 
+
+Our observation from this combined visualization was that there is a good number of Hispanic students that have enrolled. Another perception could also be that the data we have is skewed in having more information about Hispanic students. 
+
+
+
 
 
 _Source:_  [inspiration](http://bl.ocks.org/enjalot/1429426)
