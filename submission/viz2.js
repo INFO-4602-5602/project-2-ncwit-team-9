@@ -123,10 +123,10 @@ slider.on("slide", function(sliderValue) {
 });
 
 //gender selector
-d3.selectAll("input[name='stack1']").on("change", function() {
-  select_gender = this.value;
+function psuedofunction2(value) {
+  select_gender = value;
   populateBin(select_inst, select_gender, select_hsgpa);
-});
+}
 
 //institution change
 d3.select("#inst_dropdown ")

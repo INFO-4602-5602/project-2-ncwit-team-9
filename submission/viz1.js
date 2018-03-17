@@ -20,16 +20,23 @@ var margin = {
   radius = Math.min(width, height) / 2;;
 
 //gender selector
-d3.selectAll("input[name='stack1']").on("change", function() {
+
+
+
+
+
+function psuedofunction1(value)
+{
   console.log("change");
-  select_gender = this.value;
+  select_gender = value;
   $("#bar").empty();
   dsBarChart(select_gender);
   $("#donut").empty();
   dsDonutChart(school_year, select_gender);
-  $("input[name='stack1']").trigger("change");
 
-});
+}
+
+
 // d3.selectAll("input[name='stack']").on("change", function() {
 //   select_gender = this.value;
 //   populateBin(select_inst, select_gender, select_hsgpa);
