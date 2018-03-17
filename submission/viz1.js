@@ -267,7 +267,7 @@ var margin = {
     left: 50
   },
   width = 700 - margin.left - margin.right,
-  height = 650 - margin.top - margin.bottom,
+  height = 850 - margin.top - margin.bottom,
   colorBar = d3.schemeCategory20b,
   barPadding = 1;
 
