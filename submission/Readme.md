@@ -72,10 +72,12 @@ _Sources:_
 [reference](http://seiyria.com/bootstrap-slider/)
 
 <h3>Visualization 3</h3>
-For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.
-<br/>
-_Inspiration:_ [reference](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/>
-_Sources:_ [reference](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
+For viz3, we agreed upon showing the number of students that dropout from college. One aspect that intrigued us was when do students generally dropout and from which majors. We came up with a filter on the major and as you check and uncheck them, you can see the trend of dropouts across the college years. We were surprised to observe that a lot of students choose to dropout in the senior year of college(after all the struggle!!!). A caveat to keep in mind here is that it would be incorrect to compare a line for one major against another as the number of students enrolling in a course would be different for different majors and the dropouts would be relevant to that number.<br/>
+
+_Inspiration:_ 
+[reference](http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4) <br/>
+_Sources:_ 
+[reference](https://stackoverflow.com/questions/33502614/d3-how-to-select-element-by-id-when-there-is-a-dot-in-id)
 
 <h3>Visualization 4</h3>
 
