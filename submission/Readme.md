@@ -5,7 +5,7 @@ As expected from real world data, we recieved a lot of data and not all of it wa
 
 <h3>The Dataset</h3>
 The dataset was provided by NCWIT and consists of various demographic data about both potential and enrolled students, and even graduated students.  This data was detailed by institution and by major.
-
+<br/>
 We filtered the data to emphasize our goals of our chosen storyline (outlined below).  This means that we looked for records of 14 institutions which had the highest quantity and consistency of data for freshman, sophomore, junior, and senior GPA’s as well high school GPA’s.  Each of these 14 institutions had a minimum of 10 records each which showed the desired information. (We did not include 5th Yr Senior data as there was not sufficient information by which to draw preliminary conclusions.)
 
 <h3>Storyline</h3>
@@ -52,14 +52,19 @@ For all the visualizations, we decided to have a gender separated representation
 
 <h3>Visualization 1</h3>
 For viz1 we decided on potraying the enrollments into all majors in each calendar year. The bar chart in this viz is our time sensitive viz. For the extra credit points, we added a pie chart to this visualization. This pie chart is updates as per the bar you click on. On hovering over the parts of the pie, it provides a tool tip of the percentage of students that were enrolled in that year for that race. 
-
+<br/>
 Our observation from this combined visualization was that there is a good number of Hispanic students that have enrolled. Another perception could also be that the data we have is skewed in having more information about Hispanic students. 
+
+_Source:_  [inspiration](http://bl.ocks.org/diethardsteiner/3287802)
+_Source:_  [reference1](https://bl.ocks.org/vickygisel/c3f4eb2b16b86dd0f641263383f05a13)
+_Source:_  [reference2](https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9)
+_Source:_  [reference3](http://bl.ocks.org/mstanaland/6106487)
 
 <h3>Visualization 2</h3>
 For viz2 our visualization depicts the variation in CGPAs for the students from high school to their 4th year of college. In this visualization we have omitted the CGPA data associated with the 5th year students because the data was extremely sparse(as explained above) and would not contribute to our study. The slider on the left side helps you choose a high school GPA. Based on the selection, we are plotting the average CGPA observed for that high school CGPA, and a standard deviation for each academic year. Our aim is to project the approximate CGPA a student can expect to get with a particular starting high school CGPA. The data we have taken spans across all the calendar years. We do have an additional filter, besides gender, to choose 1 from the 14 institutions we've filtered on. 
-
+<br/>
 As you move the slider to change the high school GPA, you will see that there are some values for which there is no data plotted, because there is no data associated with it. In some cases, no error bar is visible because there are not enough values to calculate a good standard deviation. Hence, you would just see the average as dots on the plot.
-
+<br/>
 One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
 
 
