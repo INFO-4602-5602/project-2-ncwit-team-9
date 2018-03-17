@@ -45,7 +45,7 @@ Extension Services, Academic Alliance ---->  Extension Services<br/>
 For our prototyping process we experimented with the designs via sketching prior to implementation. You can find them here:
 
 _Source:_ [viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3811.jpg)</br>
-_Source:_ [viz1](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3812.jpg)
+_Source:_ [viz2](https://github.com/INFO-4602-5602/project-2-ncwit-team-9/blob/master/Prototyping/IMG_3812.jpg)
 
 <h2>Visualizations</h2>
 For all the visualizations, we decided to have a gender separated representation as we had well distributed values for all the datapoints. We have also provided an option to view the gender neutral data for all our visualization. One salient feature that we would like to emphasize on is that on choosing the gender filter, our d3 visualizations(viz1, viz2, viz3) represent information for the selected gender.
@@ -55,6 +55,12 @@ For viz1 we decided on potraying the enrollments into all majors in each calenda
 
 Our observation from this combined visualization was that there is a good number of Hispanic students that have enrolled. Another perception could also be that the data we have is skewed in having more information about Hispanic students. 
 
+<h3>Visualization 2</h3>
+For viz2 our visualization depicts the variation in CGPAs for the students from high school to their 4th year of college. In this visualization we have omitted the CGPA data associated with the 5th year students because the data was extremely sparse(as explained above) and would not contribute to our study. The slider on the left side helps you choose a high school GPA. Based on the selection, we are plotting the average CGPA observed for that high school CGPA, and a standard deviation for each academic year. Our aim is to project the approximate CGPA a student can expect to get with a particular starting high school CGPA. The data we have taken spans across all the calendar years. We do have an additional filter, besides gender, to choose 1 from the 14 institutions we've filtered on. 
+
+As you move the slider to change the high school GPA, you will see that there are some values for which there is no data plotted, because there is no data associated with it. In some cases, no error bar is visible because there are not enough values to calculate a good standard deviation. Hence, you would just see the average as dots on the plot.
+
+One discrepancy that we observed in the data over here is that we have high school CGPAs but we do not know the scale they're on. Another observation we made after the readings this week is that error bar for standard deviation might not be the best choice for our representation and we would like to extend the viz to use a boxplot instead.
 
 
 
